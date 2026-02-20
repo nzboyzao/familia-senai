@@ -397,7 +397,7 @@
         }
 
         .sidebar {
-            width: 260px;
+            width: 280px;
             background: rgba(10, 15, 26, 0.85);
             backdrop-filter: blur(12px);
             border-right: 1px solid rgba(79, 159, 255, 0.15);
@@ -408,6 +408,7 @@
             position: relative;
             z-index: 20;
             transition: all 0.3s;
+            overflow-y: auto;
         }
 
         .logo-sidebar {
@@ -436,6 +437,7 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
+            margin-bottom: 20px;
         }
 
         .menu-item {
@@ -467,13 +469,22 @@
             text-align: center;
         }
 
+        .menu-badge {
+            background: #4f9fff;
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 20px;
+            margin-left: auto;
+        }
+
         .user-info-sidebar {
             display: flex;
             align-items: center;
             gap: 12px;
             padding: 16px 10px;
             border-top: 1px solid rgba(79, 159, 255, 0.15);
-            margin-top: 20px;
+            margin-top: auto;
         }
 
         .user-avatar {
@@ -632,6 +643,472 @@
             color: #51cf66;
         }
 
+        /* ===== RANKING DE PONTOS ===== */
+        .points-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(79, 159, 255, 0.15);
+            border-radius: 20px;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            color: #4f9fff;
+        }
+
+        .points-badge i {
+            font-size: 0.9rem;
+        }
+
+        .ranking-container {
+            background: rgba(20, 30, 45, 0.5);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(79, 159, 255, 0.15);
+            border-radius: 24px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .ranking-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .ranking-header h2 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .ranking-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .ranking-item {
+            background: rgba(30, 40, 55, 0.6);
+            border: 1px solid rgba(79, 159, 255, 0.1);
+            border-radius: 18px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .ranking-position {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(79, 159, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #4f9fff;
+        }
+
+        .ranking-position.top1 {
+            background: #ffd70020;
+            color: #ffd700;
+            border: 1px solid #ffd700;
+        }
+
+        .ranking-position.top2 {
+            background: #c0c0c020;
+            color: #c0c0c0;
+            border: 1px solid #c0c0c0;
+        }
+
+        .ranking-position.top3 {
+            background: #cd7f3220;
+            color: #cd7f32;
+            border: 1px solid #cd7f32;
+        }
+
+        .ranking-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #1a2635, #0f172a);
+            border: 2px solid #4f9fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .ranking-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .ranking-avatar span {
+            font-size: 1.3rem;
+            color: #4f9fff;
+        }
+
+        .ranking-info {
+            flex: 1;
+        }
+
+        .ranking-name {
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .ranking-points {
+            color: #4f9fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .ranking-level {
+            color: #8ba3c7;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .level-bar {
+            width: 80px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .level-progress {
+            height: 100%;
+            background: #4f9fff;
+            border-radius: 3px;
+        }
+
+        /* ===== CHAT / RECADOS ===== */
+        .chat-container {
+            background: rgba(20, 30, 45, 0.5);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(79, 159, 255, 0.15);
+            border-radius: 24px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .chat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .chat-header h2 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .chat-messages {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding-right: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #1a2635, #0f172a);
+            border: 2px solid #4f9fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .message-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .message-avatar span {
+            font-size: 1rem;
+            color: #4f9fff;
+        }
+
+        .message-content {
+            background: rgba(30, 40, 55, 0.8);
+            border-radius: 18px;
+            padding: 12px 16px;
+            max-width: 80%;
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .message-author {
+            color: #4f9fff;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .message-time {
+            color: #8ba3c7;
+            font-size: 0.7rem;
+        }
+
+        .message-text {
+            color: #ffffff;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            word-break: break-word;
+        }
+
+        .message.own-message {
+            flex-direction: row-reverse;
+        }
+
+        .message.own-message .message-content {
+            background: rgba(79, 159, 255, 0.2);
+            border: 1px solid rgba(79, 159, 255, 0.3);
+        }
+
+        .message.own-message .message-author {
+            color: #ffffff;
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input {
+            flex: 1;
+            background: rgba(30, 40, 55, 0.8);
+            border: 1.5px solid rgba(79, 159, 255, 0.3);
+            border-radius: 16px;
+            padding: 14px 18px;
+            color: #ffffff;
+            font-size: 0.95rem;
+            outline: none;
+            resize: none;
+            min-height: 60px;
+        }
+
+        .chat-input:focus {
+            border-color: #4f9fff;
+            background: rgba(40, 50, 70, 0.9);
+        }
+
+        .chat-send-btn {
+            background: #4f9fff;
+            color: white;
+            border: none;
+            border-radius: 16px;
+            padding: 0 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chat-send-btn:hover {
+            background: #6babff;
+            transform: scale(1.02);
+        }
+
+        /* ===== ÁREA DE MEMBROS ===== */
+        .members-container {
+            background: rgba(20, 30, 45, 0.5);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(79, 159, 255, 0.15);
+            border-radius: 24px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .members-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .members-header h2 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .member-card {
+            background: rgba(30, 40, 55, 0.6);
+            border: 1px solid rgba(79, 159, 255, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .member-card:hover {
+            border-color: #4f9fff;
+            background: rgba(40, 50, 70, 0.7);
+            transform: translateY(-2px);
+        }
+
+        .member-card.admin {
+            border-left: 4px solid #4f9fff;
+        }
+
+        .member-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #1a2635, #0f172a);
+            border: 2px solid #4f9fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .member-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-avatar span {
+            font-size: 2rem;
+            color: #4f9fff;
+        }
+
+        .member-info {
+            flex: 1;
+        }
+
+        .member-name {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .member-role {
+            color: #4f9fff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .member-stats {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .member-points {
+            background: rgba(79, 159, 255, 0.1);
+            border-radius: 16px;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            color: #4f9fff;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .member-badge {
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 16px;
+            padding: 4px 10px;
+            font-size: 0.7rem;
+            color: #ffd700;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .member-joined {
+            color: #8ba3c7;
+            font-size: 0.7rem;
+            margin-top: 4px;
+        }
+
+        .member-actions {
+            display: flex;
+            gap: 8px;
+            flex-direction: column;
+        }
+
+        .member-action-btn {
+            background: transparent;
+            border: none;
+            color: #8ba3c7;
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .member-action-btn:hover {
+            color: #4f9fff;
+            background: rgba(79, 159, 255, 0.1);
+        }
+
+        .member-action-btn.delete:hover {
+            color: #ff6b6b;
+        }
+
+        .favorite-btn {
+            color: #ffd700;
+        }
+
+        .favorite-btn:hover {
+            color: #ffed4a;
+        }
+
+        /* ===== ÁREA DE TAREFAS ===== */
         .tasks-section {
             display: grid;
             grid-template-columns: 1.5fr 1fr;
@@ -739,6 +1216,17 @@
             color: #ffffff;
             font-weight: 600;
             margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .task-points {
+            font-size: 0.7rem;
+            background: rgba(79, 159, 255, 0.2);
+            padding: 2px 6px;
+            border-radius: 12px;
+            color: #4f9fff;
         }
 
         .task-meta {
@@ -747,6 +1235,7 @@
             gap: 12px;
             color: #8ba3c7;
             font-size: 0.8rem;
+            flex-wrap: wrap;
         }
 
         .task-meta span {
@@ -780,6 +1269,7 @@
             color: #ff6b6b;
         }
 
+        /* ===== CALENDÁRIO MELHORADO ===== */
         .calendar-container {
             background: rgba(20, 30, 45, 0.5);
             backdrop-filter: blur(5px);
@@ -798,6 +1288,7 @@
         .calendar-month {
             color: #ffffff;
             font-weight: 600;
+            font-size: 1.2rem;
         }
 
         .calendar-nav {
@@ -809,7 +1300,7 @@
             background: rgba(30, 40, 55, 0.8);
             border: 1px solid rgba(79, 159, 255, 0.2);
             border-radius: 10px;
-            padding: 5px 12px;
+            padding: 8px 12px;
             color: #ffffff;
             cursor: pointer;
             transition: all 0.2s;
@@ -817,6 +1308,7 @@
 
         .calendar-nav button:hover {
             border-color: #4f9fff;
+            background: rgba(79, 159, 255, 0.1);
         }
 
         .calendar-weekdays {
@@ -825,8 +1317,9 @@
             gap: 5px;
             margin-bottom: 10px;
             color: #8ba3c7;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             text-align: center;
+            font-weight: 600;
         }
 
         .calendar-days {
@@ -838,18 +1331,22 @@
         .calendar-day {
             aspect-ratio: 1;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            border-radius: 12px;
+            border-radius: 16px;
             color: #ffffff;
             font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.2s;
             background: rgba(30, 40, 55, 0.4);
+            position: relative;
+            padding: 5px;
         }
 
         .calendar-day:hover {
             background: rgba(79, 159, 255, 0.2);
+            transform: scale(1.05);
         }
 
         .calendar-day.has-task {
@@ -858,8 +1355,549 @@
             font-weight: 600;
         }
 
+        .calendar-day.has-task::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 6px;
+            height: 6px;
+            background: #4f9fff;
+            border-radius: 50%;
+        }
+
+        .calendar-day.has-multiple::after {
+            width: 8px;
+            height: 8px;
+            background: #ffd700;
+        }
+
         .calendar-day.today {
             border: 2px solid #4f9fff;
+            background: rgba(79, 159, 255, 0.15);
+        }
+
+        .calendar-day.selected {
+            background: rgba(79, 159, 255, 0.4);
+            border: 2px solid #4f9fff;
+            transform: scale(1.05);
+        }
+
+        .calendar-day .day-number {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .calendar-day .task-count {
+            font-size: 0.7rem;
+            color: #a0b8d9;
+        }
+
+        /* ===== DETALHES DO DIA ===== */
+        .day-details-container {
+            background: rgba(20, 30, 45, 0.5);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(79, 159, 255, 0.15);
+            border-radius: 24px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .day-details-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .day-details-header h3 {
+            color: #ffffff;
+            font-size: 1.2rem;
+        }
+
+        .day-details-date {
+            color: #4f9fff;
+            font-weight: 600;
+        }
+
+        .day-tasks-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .day-task-item {
+            background: rgba(30, 40, 55, 0.6);
+            border: 1px solid rgba(79, 159, 255, 0.1);
+            border-radius: 16px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .day-task-check {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #4f9fff;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4f9fff;
+        }
+
+        .day-task-check.completed {
+            background: #4f9fff;
+            color: white;
+        }
+
+        .day-task-info {
+            flex: 1;
+        }
+
+        .day-task-title {
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .day-task-meta {
+            display: flex;
+            gap: 12px;
+            color: #8ba3c7;
+            font-size: 0.75rem;
+        }
+
+        .empty-day {
+            text-align: center;
+            padding: 40px;
+            color: #8ba3c7;
+        }
+
+        .empty-day i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+
+        /* ===== ESTATÍSTICAS DE TAREFAS ===== */
+        .task-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            background: rgba(30, 40, 55, 0.4);
+            border-radius: 16px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .stat-value {
+            color: #4f9fff;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            color: #8ba3c7;
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+
+        /* FILTROS DE TAREFAS */
+        .task-filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(30, 40, 55, 0.6);
+            border: 1px solid rgba(79, 159, 255, 0.2);
+            border-radius: 20px;
+            padding: 8px 16px;
+            color: #8ba3c7;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover {
+            border-color: #4f9fff;
+            color: #ffffff;
+        }
+
+        .filter-btn.active {
+            background: #4f9fff;
+            color: white;
+            border-color: #4f9fff;
+        }
+
+        /* ===== GALERIA ===== */
+        .gallery-container {
+            background: rgba(20, 30, 45, 0.5);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(79, 159, 255, 0.15);
+            border-radius: 24px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .gallery-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .gallery-header h2 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background: rgba(30, 40, 55, 0.6);
+            border: 1px solid rgba(79, 159, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            border-color: #4f9fff;
+            transform: translateY(-2px);
+        }
+
+        .gallery-image {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            background: linear-gradient(145deg, #1a2635, #0f172a);
+        }
+
+        .gallery-info {
+            padding: 12px;
+        }
+
+        .gallery-title {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .gallery-meta {
+            color: #8ba3c7;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ===== FINANÇAS ===== */
+        .financas-container {
+            background: rgba(20, 30, 45, 0.5);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(79, 159, 255, 0.15);
+            border-radius: 24px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .financas-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .financas-header h2 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .financas-resumo {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .resumo-card {
+            background: rgba(30, 40, 55, 0.6);
+            border: 1px solid rgba(79, 159, 255, 0.1);
+            border-radius: 18px;
+            padding: 15px;
+        }
+
+        .resumo-label {
+            color: #8ba3c7;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+        }
+
+        .resumo-valor {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .resumo-valor.positivo {
+            color: #51cf66;
+        }
+
+        .resumo-valor.negativo {
+            color: #ff6b6b;
+        }
+
+        .transacoes-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .transacao-item {
+            background: rgba(30, 40, 55, 0.6);
+            border: 1px solid rgba(79, 159, 255, 0.1);
+            border-radius: 14px;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .transacao-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .transacao-icon {
+            width: 35px;
+            height: 35px;
+            background: rgba(79, 159, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4f9fff;
+        }
+
+        .transacao-descricao {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .transacao-data {
+            color: #8ba3c7;
+            font-size: 0.7rem;
+        }
+
+        .transacao-valor {
+            font-weight: 600;
+        }
+
+        .transacao-valor.despesa {
+            color: #ff6b6b;
+        }
+
+        .transacao-valor.receita {
+            color: #51cf66;
+        }
+
+        /* ===== LEMBRETES ===== */
+        .lembretes-container {
+            background: rgba(20, 30, 45, 0.5);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(79, 159, 255, 0.15);
+            border-radius: 24px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .lembretes-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .lembretes-header h2 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .lembretes-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .lembrete-item {
+            background: rgba(30, 40, 55, 0.6);
+            border: 1px solid rgba(79, 159, 255, 0.1);
+            border-radius: 16px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .lembrete-check {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #4f9fff;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4f9fff;
+        }
+
+        .lembrete-check.completed {
+            background: #4f9fff;
+            color: white;
+        }
+
+        .lembrete-info {
+            flex: 1;
+        }
+
+        .lembrete-titulo {
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .lembrete-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #8ba3c7;
+            font-size: 0.75rem;
+        }
+
+        .lembrete-data {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .lembrete-prioridade {
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .prioridade-alta {
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+        }
+
+        .prioridade-media {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+        }
+
+        .prioridade-baixa {
+            background: rgba(81, 207, 102, 0.2);
+            color: #51cf66;
+        }
+
+        /* ===== DOCUMENTOS ===== */
+        .documentos-container {
+            background: rgba(20, 30, 45, 0.5);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(79, 159, 255, 0.15);
+            border-radius: 24px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .documentos-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .documentos-header h2 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .documentos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .documento-item {
+            background: rgba(30, 40, 55, 0.6);
+            border: 1px solid rgba(79, 159, 255, 0.1);
+            border-radius: 16px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .documento-item:hover {
+            border-color: #4f9fff;
+            background: rgba(40, 50, 70, 0.7);
+        }
+
+        .documento-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(79, 159, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #4f9fff;
+        }
+
+        .documento-info {
+            flex: 1;
+        }
+
+        .documento-nome {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .documento-meta {
+            color: #8ba3c7;
+            font-size: 0.7rem;
         }
 
         .recent-activities {
@@ -937,6 +1975,8 @@
             padding: 30px;
             width: 90%;
             max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .modal h2 {
@@ -1048,6 +2088,14 @@
             .tasks-section {
                 grid-template-columns: 1fr;
             }
+            
+            .financas-resumo {
+                grid-template-columns: 1fr;
+            }
+            
+            .task-stats {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1077,6 +2125,22 @@
             
             .cards-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .members-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .member-actions {
+                flex-direction: row;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .documentos-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -1291,7 +2355,7 @@
     <!-- DASHBOARD -->
     <div id="dashboard-container">
         <div class="dashboard-container">
-            <!-- MENU LATERAL -->
+            <!-- MENU LATERAL EXPANDIDO -->
             <aside class="sidebar">
                 <div class="logo-sidebar">
                     <svg viewBox="0 0 100 100">
@@ -1303,21 +2367,47 @@
                 </div>
 
                 <div class="menu-items">
-                    <div class="menu-item active" onclick="mostrarTelaDashboard('dashboard')">
+                    <div class="menu-item" onclick="mostrarTelaDashboard('dashboard')">
                         <i class="fas fa-home"></i>
                         <span>Dashboard</span>
                     </div>
                     <div class="menu-item" onclick="mostrarTelaDashboard('membros')">
                         <i class="fas fa-users"></i>
                         <span>Membros</span>
-                    </div>
-                    <div class="menu-item" onclick="mostrarTelaDashboard('calendario')">
-                        <i class="fas fa-calendar"></i>
-                        <span>Calendário</span>
+                        <span class="menu-badge" id="membrosCount">0</span>
                     </div>
                     <div class="menu-item" onclick="mostrarTelaDashboard('tarefas')">
                         <i class="fas fa-tasks"></i>
                         <span>Tarefas</span>
+                        <span class="menu-badge" id="tarefasPendentesCount">0</span>
+                    </div>
+                    <div class="menu-item" onclick="mostrarTelaDashboard('chat')">
+                        <i class="fas fa-comments"></i>
+                        <span>Chat</span>
+                    </div>
+                    <div class="menu-item" onclick="mostrarTelaDashboard('galeria')">
+                        <i class="fas fa-images"></i>
+                        <span>Galeria</span>
+                    </div>
+                    <div class="menu-item" onclick="mostrarTelaDashboard('financas')">
+                        <i class="fas fa-coins"></i>
+                        <span>Finanças</span>
+                    </div>
+                    <div class="menu-item" onclick="mostrarTelaDashboard('lembretes')">
+                        <i class="fas fa-bell"></i>
+                        <span>Lembretes</span>
+                    </div>
+                    <div class="menu-item" onclick="mostrarTelaDashboard('documentos')">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Documentos</span>
+                    </div>
+                    <div class="menu-item" onclick="mostrarTelaDashboard('ranking')">
+                        <i class="fas fa-trophy"></i>
+                        <span>Ranking</span>
+                    </div>
+                    <div class="menu-item" onclick="mostrarTelaDashboard('config')">
+                        <i class="fas fa-cog"></i>
+                        <span>Configurações</span>
                     </div>
                 </div>
 
@@ -1341,102 +2431,292 @@
                 <!-- CABEÇALHO -->
                 <div class="header">
                     <div class="page-title">
-                        <h1>Dashboard</h1>
-                        <p id="welcomeMessage">Visão geral da sua família</p>
+                        <h1 id="pageTitle">Dashboard</h1>
+                        <p id="pageSubtitle">Visão geral da sua família</p>
                     </div>
-                    <div class="header-actions">
-                        <div class="btn-icon" onclick="abrirModalTarefa()">
-                            <i class="fas fa-plus"></i>
-                            <span>Nova tarefa</span>
+                    <div class="header-actions" id="headerActions">
+                        <!-- Ações específicas de cada tela -->
+                    </div>
+                </div>
+
+                <!-- ÁREA DE DASHBOARD -->
+                <div id="dashboardSection">
+                    <!-- CARDS DE STATUS -->
+                    <div class="cards-grid">
+                        <div class="status-card">
+                            <div class="card-header">
+                                <div class="card-icon"><i class="fas fa-tasks"></i></div>
+                                <div class="card-title">Tarefas hoje</div>
+                            </div>
+                            <div class="card-value" id="totalTarefasHoje">0</div>
+                            <div class="card-sub">
+                                <span class="trend-up" id="tarefasConcluidasHoje">0 concluídas</span>
+                            </div>
+                        </div>
+
+                        <div class="status-card">
+                            <div class="card-header">
+                                <div class="card-icon"><i class="fas fa-clock"></i></div>
+                                <div class="card-title">Pendentes</div>
+                            </div>
+                            <div class="card-value" id="tarefasPendentes">0</div>
+                            <div class="card-sub">aguardando ação</div>
+                        </div>
+
+                        <div class="status-card">
+                            <div class="card-header">
+                                <div class="card-icon"><i class="fas fa-users"></i></div>
+                                <div class="card-title">Membros</div>
+                            </div>
+                            <div class="card-value" id="totalMembros">1</div>
+                            <div class="card-sub">ativos na família</div>
+                        </div>
+
+                        <div class="status-card">
+                            <div class="card-header">
+                                <div class="card-icon"><i class="fas fa-calendar-check"></i></div>
+                                <div class="card-title">Eventos</div>
+                            </div>
+                            <div class="card-value" id="proximosEventos">0</div>
+                            <div class="card-sub">próximos 7 dias</div>
+                        </div>
+                    </div>
+
+                    <!-- ÁREA DE TAREFAS E CALENDÁRIO -->
+                    <div class="tasks-section">
+                        <!-- LISTA DE TAREFAS DE HOJE -->
+                        <div class="tasks-container">
+                            <div class="section-header">
+                                <h2>Tarefas de hoje</h2>
+                                <button class="btn-add" onclick="mostrarTelaDashboard('tarefas')">
+                                    <i class="fas fa-plus"></i> Ver todas
+                                </button>
+                            </div>
+                            
+                            <div class="task-list" id="taskList">
+                                <!-- Tarefas serão inseridas aqui via JavaScript -->
+                            </div>
+                        </div>
+
+                        <!-- CALENDÁRIO -->
+                        <div class="calendar-container">
+                            <div class="calendar-header">
+                                <h3 class="calendar-month" id="currentMonth">Fevereiro 2026</h3>
+                                <div class="calendar-nav">
+                                    <button onclick="navegarMes(-1)"><i class="fas fa-chevron-left"></i></button>
+                                    <button onclick="navegarMes(1)"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                            
+                            <div class="calendar-weekdays">
+                                <div>Dom</div><div>Seg</div><div>Ter</div><div>Qua</div><div>Qui</div><div>Sex</div><div>Sáb</div>
+                            </div>
+                            
+                            <div class="calendar-days" id="calendarDays">
+                                <!-- Dias serão inseridos aqui via JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DETALHES DO DIA SELECIONADO -->
+                    <div class="day-details-container" id="dayDetails" style="display: none;">
+                        <div class="day-details-header">
+                            <h3>Detalhes do dia</h3>
+                            <span class="day-details-date" id="selectedDate"></span>
+                        </div>
+                        <div class="day-tasks-list" id="dayTasksList">
+                            <!-- Tarefas do dia serão inseridas aqui -->
+                        </div>
+                    </div>
+
+                    <!-- ATIVIDADES RECENTES -->
+                    <div class="recent-activities">
+                        <div class="section-header">
+                            <h2>Atividades recentes</h2>
+                        </div>
+                        
+                        <div class="activity-list" id="activityList">
+                            <!-- Atividades serão inseridas aqui via JavaScript -->
                         </div>
                     </div>
                 </div>
 
-                <!-- CARDS DE STATUS -->
-                <div class="cards-grid">
-                    <div class="status-card">
-                        <div class="card-header">
-                            <div class="card-icon"><i class="fas fa-tasks"></i></div>
-                            <div class="card-title">Tarefas hoje</div>
+                <!-- ÁREA DE MEMBROS -->
+                <div id="membersSection" style="display: none;">
+                    <div class="members-container">
+                        <div class="members-header">
+                            <h2>Todos os Membros</h2>
                         </div>
-                        <div class="card-value" id="totalTarefasHoje">0</div>
-                        <div class="card-sub">
-                            <span class="trend-up" id="tarefasConcluidasHoje">0 concluídas</span>
+                        
+                        <div class="members-grid" id="membersGrid">
+                            <!-- Membros serão inseridos aqui via JavaScript -->
                         </div>
-                    </div>
-
-                    <div class="status-card">
-                        <div class="card-header">
-                            <div class="card-icon"><i class="fas fa-clock"></i></div>
-                            <div class="card-title">Pendentes</div>
-                        </div>
-                        <div class="card-value" id="tarefasPendentes">0</div>
-                        <div class="card-sub">aguardando ação</div>
-                    </div>
-
-                    <div class="status-card">
-                        <div class="card-header">
-                            <div class="card-icon"><i class="fas fa-users"></i></div>
-                            <div class="card-title">Membros</div>
-                        </div>
-                        <div class="card-value" id="totalMembros">1</div>
-                        <div class="card-sub">ativos na família</div>
-                    </div>
-
-                    <div class="status-card">
-                        <div class="card-header">
-                            <div class="card-icon"><i class="fas fa-calendar-check"></i></div>
-                            <div class="card-title">Eventos</div>
-                        </div>
-                        <div class="card-value" id="proximosEventos">0</div>
-                        <div class="card-sub">próximos 7 dias</div>
                     </div>
                 </div>
 
-                <!-- ÁREA DE TAREFAS E CALENDÁRIO -->
-                <div class="tasks-section">
-                    <!-- LISTA DE TAREFAS -->
+                <!-- ÁREA DE TAREFAS COMPLETA (MELHORADA) -->
+                <div id="tarefasSection" style="display: none;">
                     <div class="tasks-container">
                         <div class="section-header">
-                            <h2>Tarefas de hoje</h2>
+                            <h2>📋 Todas as Tarefas</h2>
                             <button class="btn-add" onclick="abrirModalTarefa()">
-                                <i class="fas fa-plus"></i> Adicionar
+                                <i class="fas fa-plus"></i> Nova Tarefa
                             </button>
                         </div>
                         
-                        <div class="task-list" id="taskList">
-                            <!-- Tarefas serão inseridas aqui via JavaScript -->
+                        <!-- FILTROS -->
+                        <div class="task-filters">
+                            <button class="filter-btn active" onclick="filtrarTarefas('todas')">Todas</button>
+                            <button class="filter-btn" onclick="filtrarTarefas('hoje')">Hoje</button>
+                            <button class="filter-btn" onclick="filtrarTarefas('semana')">Esta semana</button>
+                            <button class="filter-btn" onclick="filtrarTarefas('pendentes')">Pendentes</button>
+                            <button class="filter-btn" onclick="filtrarTarefas('concluidas')">Concluídas</button>
+                            <button class="filter-btn" onclick="filtrarTarefas('atrasadas')">Atrasadas</button>
                         </div>
-                    </div>
-
-                    <!-- CALENDÁRIO -->
-                    <div class="calendar-container">
-                        <div class="calendar-header">
-                            <h3 class="calendar-month" id="currentMonth">Fevereiro 2026</h3>
-                            <div class="calendar-nav">
-                                <button onclick="navegarMes(-1)"><i class="fas fa-chevron-left"></i></button>
-                                <button onclick="navegarMes(1)"><i class="fas fa-chevron-right"></i></button>
+                        
+                        <!-- ESTATÍSTICAS -->
+                        <div class="task-stats">
+                            <div class="stat-item">
+                                <div class="stat-value" id="totalTarefasStat">0</div>
+                                <div class="stat-label">Total</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="concluidasStat">0</div>
+                                <div class="stat-label">Concluídas</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value" id="pendentesStat">0</div>
+                                <div class="stat-label">Pendentes</div>
                             </div>
                         </div>
                         
-                        <div class="calendar-weekdays">
-                            <div>Dom</div><div>Seg</div><div>Ter</div><div>Qua</div><div>Qui</div><div>Sex</div><div>Sáb</div>
-                        </div>
-                        
-                        <div class="calendar-days" id="calendarDays">
-                            <!-- Dias serão inseridos aqui via JavaScript -->
+                        <!-- LISTA DE TAREFAS -->
+                        <div class="task-list" id="allTasksList" style="max-height: 500px;">
+                            <!-- Todas as tarefas serão inseridas aqui -->
                         </div>
                     </div>
                 </div>
 
-                <!-- ATIVIDADES RECENTES -->
-                <div class="recent-activities">
-                    <div class="section-header">
-                        <h2>Atividades recentes</h2>
+                <!-- ÁREA DE CHAT -->
+                <div id="chatSection" style="display: none;">
+                    <div class="chat-container">
+                        <div class="chat-header">
+                            <h2>Chat da Família</h2>
+                            <span class="points-badge"><i class="fas fa-star"></i> +1 ponto por mensagem</span>
+                        </div>
+                        
+                        <div class="chat-messages" id="chatMessages">
+                            <!-- Mensagens serão inseridas aqui via JavaScript -->
+                        </div>
+                        
+                        <div class="chat-input-area">
+                            <textarea class="chat-input" id="chatInput" placeholder="Digite sua mensagem..."></textarea>
+                            <button class="chat-send-btn" onclick="enviarMensagem()">
+                                <i class="fas fa-paper-plane"></i> Enviar
+                            </button>
+                        </div>
                     </div>
-                    
-                    <div class="activity-list" id="activityList">
-                        <!-- Atividades serão inseridas aqui via JavaScript -->
+                </div>
+
+                <!-- ÁREA DE GALERIA -->
+                <div id="galeriaSection" style="display: none;">
+                    <div class="gallery-container">
+                        <div class="gallery-header">
+                            <h2>Galeria da Família</h2>
+                            <button class="btn-add" onclick="abrirModalUploadFoto()">
+                                <i class="fas fa-upload"></i> Upload
+                            </button>
+                        </div>
+                        
+                        <div class="gallery-grid" id="galleryGrid">
+                            <!-- Fotos serão inseridas aqui -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ÁREA DE FINANÇAS -->
+                <div id="financasSection" style="display: none;">
+                    <div class="financas-container">
+                        <div class="financas-header">
+                            <h2>Finanças da Família</h2>
+                            <button class="btn-add" onclick="abrirModalTransacao()">
+                                <i class="fas fa-plus"></i> Nova Transação
+                            </button>
+                        </div>
+                        
+                        <div class="financas-resumo">
+                            <div class="resumo-card">
+                                <div class="resumo-label">Saldo Total</div>
+                                <div class="resumo-valor" id="saldoTotal">R$ 0,00</div>
+                            </div>
+                            <div class="resumo-card">
+                                <div class="resumo-label">Receitas</div>
+                                <div class="resumo-valor positivo" id="totalReceitas">R$ 0,00</div>
+                            </div>
+                            <div class="resumo-card">
+                                <div class="resumo-label">Despesas</div>
+                                <div class="resumo-valor negativo" id="totalDespesas">R$ 0,00</div>
+                            </div>
+                        </div>
+                        
+                        <h3 style="color: #ffffff; margin: 20px 0 15px;">Últimas Transações</h3>
+                        <div class="transacoes-list" id="transacoesList">
+                            <!-- Transações serão inseridas aqui -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ÁREA DE LEMBRETES -->
+                <div id="lembretesSection" style="display: none;">
+                    <div class="lembretes-container">
+                        <div class="lembretes-header">
+                            <h2>Lembretes</h2>
+                            <button class="btn-add" onclick="abrirModalLembrete()">
+                                <i class="fas fa-plus"></i> Novo Lembrete
+                            </button>
+                        </div>
+                        
+                        <div class="lembretes-list" id="lembretesList">
+                            <!-- Lembretes serão inseridos aqui -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ÁREA DE DOCUMENTOS -->
+                <div id="documentosSection" style="display: none;">
+                    <div class="documentos-container">
+                        <div class="documentos-header">
+                            <h2>Documentos</h2>
+                            <button class="btn-add" onclick="abrirModalDocumento()">
+                                <i class="fas fa-upload"></i> Adicionar
+                            </button>
+                        </div>
+                        
+                        <div class="documentos-grid" id="documentosGrid">
+                            <!-- Documentos serão inseridos aqui -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ÁREA DE RANKING -->
+                <div id="rankingSection" style="display: none;">
+                    <div class="ranking-container">
+                        <div class="ranking-header">
+                            <h2>Ranking de Pontos</h2>
+                            <span class="points-badge"><i class="fas fa-star"></i> Ganhe pontos!</span>
+                        </div>
+                        
+                        <div class="ranking-list" id="rankingList">
+                            <!-- Ranking será inserido aqui -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ÁREA DE CONFIGURAÇÕES -->
+                <div id="configSection" style="display: none;">
+                    <div class="members-container">
+                        <h2 style="color: #ffffff; margin-bottom: 20px;">Configurações</h2>
+                        <p style="color: #8ba3c7;">Em desenvolvimento...</p>
                     </div>
                 </div>
             </main>
@@ -1453,12 +2733,155 @@
             <select id="taskAssignee">
                 <option value="">Atribuir para...</option>
             </select>
+            <select id="taskPriority">
+                <option value="media">Prioridade Média</option>
+                <option value="alta">Prioridade Alta</option>
+                <option value="baixa">Prioridade Baixa</option>
+            </select>
+            <div class="info-box" style="margin-top: 10px;">
+                <i class="fas fa-star"></i>
+                <span>Concluir tarefas vale <strong>10 pontos</strong>!</span>
+            </div>
             
             <div class="modal-buttons">
                 <button class="btn-cancel" onclick="fecharModalTarefa()">Cancelar</button>
                 <button class="btn-save" onclick="salvarTarefa()">Salvar</button>
             </div>
             <input type="hidden" id="editingTaskId">
+        </div>
+    </div>
+
+    <!-- MODAL CONVIDAR MEMBRO -->
+    <div class="modal-overlay" id="modalConvidar">
+        <div class="modal">
+            <h2>Convidar Membro</h2>
+            <p style="color: #8ba3c7; margin-bottom: 20px;">Compartilhe as informações abaixo com o novo membro</p>
+            
+            <div class="info-box" style="margin-bottom: 20px;">
+                <i class="fas fa-info-circle"></i>
+                <span>O membro precisará destas informações para se cadastrar</span>
+            </div>
+            
+            <div style="background: rgba(30, 40, 55, 0.8); border-radius: 16px; padding: 20px; margin-bottom: 20px;">
+                <p style="color: #ffffff; margin-bottom: 10px;"><strong>Família:</strong> <span id="conviteFamiliaNome"></span></p>
+                <p style="color: #ffffff; margin-bottom: 10px;"><strong>Senha da família:</strong> <span id="conviteFamiliaSenha" style="color: #4f9fff;"></span></p>
+                <p style="color: #8ba3c7; font-size: 0.9rem;">Eles devem escolher "Entrar em Família" e usar estes dados</p>
+            </div>
+            
+            <div class="modal-buttons">
+                <button class="btn-save" onclick="copiarInfoConvite()">
+                    <i class="fas fa-copy"></i> Copiar Informações
+                </button>
+                <button class="btn-cancel" onclick="fecharModalConvidar()">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL EDITAR MEMBRO -->
+    <div class="modal-overlay" id="modalEditarMembro">
+        <div class="modal">
+            <h2>Editar Membro</h2>
+            <input type="text" id="editMembroNome" placeholder="Nome do membro">
+            <select id="editMembroCargo">
+                <option value="membro">Membro</option>
+                <option value="admin">Administrador</option>
+            </select>
+            
+            <div class="modal-buttons">
+                <button class="btn-save" onclick="salvarEdicaoMembro()">Salvar</button>
+                <button class="btn-cancel" onclick="fecharModalEditarMembro()">Cancelar</button>
+            </div>
+            <input type="hidden" id="editMembroId">
+        </div>
+    </div>
+
+    <!-- MODAL FAVORITAR -->
+    <div class="modal-overlay" id="modalFavoritar">
+        <div class="modal">
+            <h2>⭐ Favoritar Membro</h2>
+            <p style="color: #8ba3c7; margin-bottom: 20px;">Escolha um motivo para favoritar este membro</p>
+            
+            <select id="favoritoMotivo">
+                <option value="ajudou">Sempre ajuda</option>
+                <option value="organizado">Muito organizado</option>
+                <option value="divertido">Divertido</option>
+                <option value="responsavel">Responsável</option>
+                <option value="outro">Outro</option>
+            </select>
+            
+            <div class="modal-buttons">
+                <button class="btn-save" onclick="salvarFavorito()">Favoritar</button>
+                <button class="btn-cancel" onclick="fecharModalFavoritar()">Cancelar</button>
+            </div>
+            <input type="hidden" id="favoritoMembroId">
+        </div>
+    </div>
+
+    <!-- MODAL UPLOAD FOTO -->
+    <div class="modal-overlay" id="modalUploadFoto">
+        <div class="modal">
+            <h2>Upload de Foto</h2>
+            <input type="text" id="fotoTitulo" placeholder="Título da foto">
+            <input type="file" id="fotoArquivo" accept="image/*">
+            
+            <div class="modal-buttons">
+                <button class="btn-save" onclick="salvarFoto()">Upload</button>
+                <button class="btn-cancel" onclick="fecharModalUploadFoto()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL TRANSAÇÃO -->
+    <div class="modal-overlay" id="modalTransacao">
+        <div class="modal">
+            <h2>Nova Transação</h2>
+            <input type="text" id="transacaoDescricao" placeholder="Descrição">
+            <input type="number" id="transacaoValor" placeholder="Valor (R$)" step="0.01">
+            <select id="transacaoTipo">
+                <option value="receita">Receita</option>
+                <option value="despesa">Despesa</option>
+            </select>
+            <input type="date" id="transacaoData">
+            
+            <div class="modal-buttons">
+                <button class="btn-save" onclick="salvarTransacao()">Salvar</button>
+                <button class="btn-cancel" onclick="fecharModalTransacao()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL LEMBRETE -->
+    <div class="modal-overlay" id="modalLembrete">
+        <div class="modal">
+            <h2>Novo Lembrete</h2>
+            <input type="text" id="lembreteTitulo" placeholder="Título">
+            <textarea id="lembreteDescricao" placeholder="Descrição"></textarea>
+            <input type="date" id="lembreteData">
+            <select id="lembretePrioridade">
+                <option value="baixa">Prioridade Baixa</option>
+                <option value="media">Prioridade Média</option>
+                <option value="alta">Prioridade Alta</option>
+            </select>
+            
+            <div class="modal-buttons">
+                <button class="btn-save" onclick="salvarLembrete()">Salvar</button>
+                <button class="btn-cancel" onclick="fecharModalLembrete()">Cancelar</button>
+            </div>
+            <input type="hidden" id="editingLembreteId">
+        </div>
+    </div>
+
+    <!-- MODAL DOCUMENTO -->
+    <div class="modal-overlay" id="modalDocumento">
+        <div class="modal">
+            <h2>Adicionar Documento</h2>
+            <input type="text" id="documentoNome" placeholder="Nome do documento">
+            <input type="file" id="documentoArquivo">
+            
+            <div class="modal-buttons">
+                <button class="btn-save" onclick="salvarDocumento()">Adicionar</button>
+                <button class="btn-cancel" onclick="fecharModalDocumento()">Cancelar</button>
+            </div>
         </div>
     </div>
 
@@ -1568,6 +2991,16 @@
         let membros = [];
         let tarefas = [];
         let atividades = [];
+        let mensagens = [];
+        let favoritos = [];
+        let fotos = [];
+        let transacoes = [];
+        let lembretes = [];
+        let documentos = [];
+
+        // Variáveis de controle
+        let diaSelecionado = null;
+        let filtroTarefaAtual = 'todas';
 
         // Carregar dados salvos ao iniciar
         function carregarDadosIniciais() {
@@ -1593,6 +3026,42 @@
             const atividadesSalvas = localStorage.getItem('familyhub_atividades');
             if (atividadesSalvas) {
                 atividades = JSON.parse(atividadesSalvas);
+            }
+
+            // Carregar mensagens
+            const mensagensSalvas = localStorage.getItem('familyhub_mensagens');
+            if (mensagensSalvas) {
+                mensagens = JSON.parse(mensagensSalvas);
+            }
+
+            // Carregar favoritos
+            const favoritosSalvos = localStorage.getItem('familyhub_favoritos');
+            if (favoritosSalvos) {
+                favoritos = JSON.parse(favoritosSalvos);
+            }
+
+            // Carregar fotos
+            const fotosSalvas = localStorage.getItem('familyhub_fotos');
+            if (fotosSalvas) {
+                fotos = JSON.parse(fotosSalvas);
+            }
+
+            // Carregar transações
+            const transacoesSalvas = localStorage.getItem('familyhub_transacoes');
+            if (transacoesSalvas) {
+                transacoes = JSON.parse(transacoesSalvas);
+            }
+
+            // Carregar lembretes
+            const lembretesSalvas = localStorage.getItem('familyhub_lembretes');
+            if (lembretesSalvas) {
+                lembretes = JSON.parse(lembretesSalvas);
+            }
+
+            // Carregar documentos
+            const documentosSalvos = localStorage.getItem('familyhub_documentos');
+            if (documentosSalvos) {
+                documentos = JSON.parse(documentosSalvos);
             }
 
             // Verificar se tem usuário logado
@@ -1631,6 +3100,30 @@
 
         function salvarAtividades() {
             localStorage.setItem('familyhub_atividades', JSON.stringify(atividades));
+        }
+
+        function salvarMensagens() {
+            localStorage.setItem('familyhub_mensagens', JSON.stringify(mensagens));
+        }
+
+        function salvarFavoritos() {
+            localStorage.setItem('familyhub_favoritos', JSON.stringify(favoritos));
+        }
+
+        function salvarFotos() {
+            localStorage.setItem('familyhub_fotos', JSON.stringify(fotos));
+        }
+
+        function salvarTransacoes() {
+            localStorage.setItem('familyhub_transacoes', JSON.stringify(transacoes));
+        }
+
+        function salvarLembretes() {
+            localStorage.setItem('familyhub_lembretes', JSON.stringify(lembretes));
+        }
+
+        function salvarDocumentos() {
+            localStorage.setItem('familyhub_documentos', JSON.stringify(documentos));
         }
 
         // ==================== FUNÇÕES DE AUTENTICAÇÃO ====================
@@ -1795,7 +3288,7 @@
             familias.push(familia);
             salvarFamilias();
             
-            // Criar admin como membro
+            // Criar admin como membro (começa com 0 pontos)
             const admin = {
                 id: Date.now() + 1,
                 familiaId: familia.id,
@@ -1804,6 +3297,8 @@
                 senha: adminSenha,
                 foto: null,
                 cargo: 'admin',
+                pontos: 0,
+                nivel: 1,
                 dataCadastro: new Date().toISOString()
             };
             
@@ -1890,6 +3385,8 @@
                 senha: senha,
                 foto: foto,
                 cargo: 'membro',
+                pontos: 0,
+                nivel: 1,
                 dataCadastro: new Date().toISOString()
             };
             
@@ -1927,7 +3424,8 @@
             
             usuarioAtual = {
                 ...membro,
-                familiaNome: familia ? familia.nome : 'Família'
+                familiaNome: familia ? familia.nome : 'Família',
+                familiaSenha: familia ? familia.senha : ''
             };
             
             // Salvar sessão
@@ -1958,25 +3456,393 @@
             // Atualizar informações do usuário
             document.getElementById('sidebarUserName').textContent = usuarioAtual.nome;
             document.getElementById('sidebarFamilyName').textContent = usuarioAtual.familiaNome;
-            document.getElementById('welcomeMessage').textContent = `Visão geral da família ${usuarioAtual.familiaNome}`;
             
             if (usuarioAtual.foto) {
                 document.getElementById('sidebarAvatar').innerHTML = `<img src="${usuarioAtual.foto}" alt="avatar">`;
             }
             
-            // Filtrar tarefas da família
-            carregarTarefasFamilia();
-            atualizarListaAtividades();
+            // Atualizar badges do menu
+            atualizarBadges();
+            
+            // Mostrar dashboard por padrão
+            mostrarTelaDashboard('dashboard');
         }
 
-        // ==================== FUNÇÕES DO DASHBOARD ====================
-        
+        // Atualizar badges do menu
+        function atualizarBadges() {
+            const membrosFamilia = membros.filter(m => m.familiaId === usuarioAtual.familiaId);
+            document.getElementById('membrosCount').textContent = membrosFamilia.length;
+            
+            const tarefasPendentes = tarefas.filter(t => t.familiaId === usuarioAtual.familiaId && !t.concluida);
+            document.getElementById('tarefasPendentesCount').textContent = tarefasPendentes.length;
+        }
+
+        // ==================== NAVEGAÇÃO DO DASHBOARD ====================
+        window.mostrarTelaDashboard = function(tela) {
+            // Atualizar menu ativo
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Esconder todas as seções
+            document.getElementById('dashboardSection').style.display = 'none';
+            document.getElementById('membersSection').style.display = 'none';
+            document.getElementById('tarefasSection').style.display = 'none';
+            document.getElementById('chatSection').style.display = 'none';
+            document.getElementById('galeriaSection').style.display = 'none';
+            document.getElementById('financasSection').style.display = 'none';
+            document.getElementById('lembretesSection').style.display = 'none';
+            document.getElementById('documentosSection').style.display = 'none';
+            document.getElementById('rankingSection').style.display = 'none';
+            document.getElementById('configSection').style.display = 'none';
+            
+            // Configurar cada tela
+            if (tela === 'dashboard') {
+                document.querySelector('.menu-item:nth-child(1)').classList.add('active');
+                document.getElementById('dashboardSection').style.display = 'block';
+                document.getElementById('pageTitle').textContent = 'Dashboard';
+                document.getElementById('pageSubtitle').textContent = 'Visão geral da sua família';
+                document.getElementById('headerActions').innerHTML = `
+                    <div class="btn-icon" onclick="mostrarTelaDashboard('tarefas')">
+                        <i class="fas fa-plus"></i>
+                        <span>Nova Tarefa</span>
+                    </div>
+                `;
+                
+                carregarTarefasFamilia();
+                atualizarListaAtividades();
+                atualizarCards();
+                diaSelecionado = new Date().toISOString().split('T')[0];
+                mostrarDetalhesDia(diaSelecionado);
+                
+            } else if (tela === 'membros') {
+                document.querySelector('.menu-item:nth-child(2)').classList.add('active');
+                document.getElementById('membersSection').style.display = 'block';
+                document.getElementById('pageTitle').textContent = 'Membros da Família';
+                document.getElementById('pageSubtitle').textContent = 'Gerencie os membros da sua família';
+                document.getElementById('headerActions').innerHTML = `
+                    <div class="btn-icon" onclick="abrirModalConvidarMembro()">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Convidar Membro</span>
+                    </div>
+                `;
+                
+                atualizarListaMembros();
+                
+            } else if (tela === 'tarefas') {
+                document.querySelector('.menu-item:nth-child(3)').classList.add('active');
+                document.getElementById('tarefasSection').style.display = 'block';
+                document.getElementById('pageTitle').textContent = 'Tarefas';
+                document.getElementById('pageSubtitle').textContent = 'Gerencie as tarefas da família';
+                document.getElementById('headerActions').innerHTML = `
+                    <div class="btn-icon" onclick="abrirModalTarefa()">
+                        <i class="fas fa-plus"></i>
+                        <span>Nova Tarefa</span>
+                    </div>
+                `;
+                
+                filtroTarefaAtual = 'todas';
+                atualizarTodasTarefas();
+                atualizarEstatisticasTarefas();
+                
+            } else if (tela === 'chat') {
+                document.querySelector('.menu-item:nth-child(4)').classList.add('active');
+                document.getElementById('chatSection').style.display = 'block';
+                document.getElementById('pageTitle').textContent = 'Chat da Família';
+                document.getElementById('pageSubtitle').textContent = 'Converse e deixe recados';
+                document.getElementById('headerActions').innerHTML = '';
+                
+                atualizarChat();
+                
+            } else if (tela === 'galeria') {
+                document.querySelector('.menu-item:nth-child(5)').classList.add('active');
+                document.getElementById('galeriaSection').style.display = 'block';
+                document.getElementById('pageTitle').textContent = 'Galeria';
+                document.getElementById('pageSubtitle').textContent = 'Fotos da família';
+                document.getElementById('headerActions').innerHTML = `
+                    <div class="btn-icon" onclick="abrirModalUploadFoto()">
+                        <i class="fas fa-upload"></i>
+                        <span>Upload</span>
+                    </div>
+                `;
+                
+                atualizarGaleria();
+                
+            } else if (tela === 'financas') {
+                document.querySelector('.menu-item:nth-child(6)').classList.add('active');
+                document.getElementById('financasSection').style.display = 'block';
+                document.getElementById('pageTitle').textContent = 'Finanças';
+                document.getElementById('pageSubtitle').textContent = 'Controle financeiro da família';
+                document.getElementById('headerActions').innerHTML = `
+                    <div class="btn-icon" onclick="abrirModalTransacao()">
+                        <i class="fas fa-plus"></i>
+                        <span>Nova Transação</span>
+                    </div>
+                `;
+                
+                atualizarFinancas();
+                
+            } else if (tela === 'lembretes') {
+                document.querySelector('.menu-item:nth-child(7)').classList.add('active');
+                document.getElementById('lembretesSection').style.display = 'block';
+                document.getElementById('pageTitle').textContent = 'Lembretes';
+                document.getElementById('pageSubtitle').textContent = 'Não esqueça de nada';
+                document.getElementById('headerActions').innerHTML = `
+                    <div class="btn-icon" onclick="abrirModalLembrete()">
+                        <i class="fas fa-plus"></i>
+                        <span>Novo Lembrete</span>
+                    </div>
+                `;
+                
+                atualizarLembretes();
+                
+            } else if (tela === 'documentos') {
+                document.querySelector('.menu-item:nth-child(8)').classList.add('active');
+                document.getElementById('documentosSection').style.display = 'block';
+                document.getElementById('pageTitle').textContent = 'Documentos';
+                document.getElementById('pageSubtitle').textContent = 'Arquivos importantes';
+                document.getElementById('headerActions').innerHTML = `
+                    <div class="btn-icon" onclick="abrirModalDocumento()">
+                        <i class="fas fa-upload"></i>
+                        <span>Adicionar</span>
+                    </div>
+                `;
+                
+                atualizarDocumentos();
+                
+            } else if (tela === 'ranking') {
+                document.querySelector('.menu-item:nth-child(9)').classList.add('active');
+                document.getElementById('rankingSection').style.display = 'block';
+                document.getElementById('pageTitle').textContent = 'Ranking';
+                document.getElementById('pageSubtitle').textContent = 'Quem tem mais pontos?';
+                document.getElementById('headerActions').innerHTML = '';
+                
+                atualizarRanking();
+                
+            } else if (tela === 'config') {
+                document.querySelector('.menu-item:nth-child(10)').classList.add('active');
+                document.getElementById('configSection').style.display = 'block';
+                document.getElementById('pageTitle').textContent = 'Configurações';
+                document.getElementById('pageSubtitle').textContent = 'Ajustes da família';
+                document.getElementById('headerActions').innerHTML = '';
+            }
+        };
+
+        // ==================== FUNÇÕES DE MEMBROS ====================
+        function atualizarListaMembros() {
+            const membersGrid = document.getElementById('membersGrid');
+            const membrosFamilia = membros.filter(m => m.familiaId === usuarioAtual.familiaId);
+            
+            if (membrosFamilia.length === 0) {
+                membersGrid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 60px; color: #8ba3c7;">
+                        <i class="fas fa-users" style="font-size: 4rem; margin-bottom: 20px; opacity: 0.5;"></i>
+                        <h3 style="color: #ffffff; margin-bottom: 10px;">Nenhum membro encontrado</h3>
+                        <p>Convide membros para sua família</p>
+                        <button class="btn-add" style="margin-top: 20px;" onclick="abrirModalConvidarMembro()">
+                            <i class="fas fa-user-plus"></i> Convidar Membro
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+            
+            membersGrid.innerHTML = membrosFamilia.map(membro => {
+                const dataCadastro = new Date(membro.dataCadastro);
+                const dataFormatada = dataCadastro.toLocaleDateString('pt-BR');
+                const isFavorito = favoritos.some(f => f.membroId === membro.id && f.familiaId === usuarioAtual.familiaId);
+                const favoritoInfo = favoritos.find(f => f.membroId === membro.id && f.familiaId === usuarioAtual.familiaId);
+                
+                // Calcular nível baseado em pontos
+                const nivel = Math.floor(membro.pontos / 100) + 1;
+                
+                return `
+                    <div class="member-card ${membro.cargo === 'admin' ? 'admin' : ''}">
+                        <div class="member-avatar">
+                            ${membro.foto ? `<img src="${membro.foto}" alt="${membro.nome}">` : `<span>${membro.nome.charAt(0)}</span>`}
+                        </div>
+                        <div class="member-info">
+                            <div class="member-name">
+                                ${membro.nome}
+                                ${isFavorito ? '<i class="fas fa-star" style="color: #ffd700;"></i>' : ''}
+                            </div>
+                            <div class="member-role">${membro.cargo === 'admin' ? '👑 Administrador' : '👤 Membro'}</div>
+                            
+                            <div class="member-stats">
+                                <span class="member-points">
+                                    <i class="fas fa-star"></i> ${membro.pontos} pts
+                                </span>
+                                <span class="member-badge">
+                                    <i class="fas fa-level-up-alt"></i> Nível ${nivel}
+                                </span>
+                            </div>
+                            
+                            <div class="member-joined">Membro desde ${dataFormatada}</div>
+                            
+                            ${isFavorito ? `
+                                <div style="font-size: 0.7rem; color: #ffd700; margin-top: 5px;">
+                                    ⭐ Favorito: ${favoritoInfo?.motivo || 'Membro especial'}
+                                </div>
+                            ` : ''}
+                        </div>
+                        <div class="member-actions">
+                            ${usuarioAtual.cargo === 'admin' && membro.id !== usuarioAtual.id ? `
+                                <button class="member-action-btn" onclick="abrirModalEditarMembro('${membro.id}')" title="Editar">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="member-action-btn delete" onclick="removerMembro('${membro.id}')" title="Remover">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            ` : ''}
+                            
+                            <button class="member-action-btn ${isFavorito ? 'favorite-btn' : ''}" onclick="abrirModalFavoritar('${membro.id}')" title="${isFavorito ? 'Favorito' : 'Favoritar'}">
+                                <i class="fas fa-star"></i>
+                            </button>
+                            
+                            <button class="member-action-btn" onclick="verPerfilMembro('${membro.id}')" title="Ver perfil">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        window.abrirModalConvidarMembro = function() {
+            const modal = document.getElementById('modalConvidar');
+            document.getElementById('conviteFamiliaNome').textContent = usuarioAtual.familiaNome;
+            document.getElementById('conviteFamiliaSenha').textContent = usuarioAtual.familiaSenha;
+            modal.style.display = 'flex';
+        };
+
+        window.fecharModalConvidar = function() {
+            document.getElementById('modalConvidar').style.display = 'none';
+        };
+
+        window.copiarInfoConvite = function() {
+            const texto = `Entre na família ${usuarioAtual.familiaNome} no FamilyHub!\n\nFamília: ${usuarioAtual.familiaNome}\nSenha da família: ${usuarioAtual.familiaSenha}\n\nAcesse familyhub.app e escolha "Entrar em Família" para se cadastrar.`;
+            
+            navigator.clipboard.writeText(texto).then(() => {
+                mostrarAlerta('sucesso', 'Informações copiadas para a área de transferência!');
+            }).catch(() => {
+                mostrarAlerta('erro', 'Erro ao copiar. Copie manualmente.');
+            });
+        };
+
+        window.abrirModalEditarMembro = function(membroId) {
+            const membro = membros.find(m => m.id == membroId);
+            if (membro) {
+                document.getElementById('editMembroId').value = membroId;
+                document.getElementById('editMembroNome').value = membro.nome;
+                document.getElementById('editMembroCargo').value = membro.cargo;
+                document.getElementById('modalEditarMembro').style.display = 'flex';
+            }
+        };
+
+        window.fecharModalEditarMembro = function() {
+            document.getElementById('modalEditarMembro').style.display = 'none';
+        };
+
+        window.salvarEdicaoMembro = function() {
+            const membroId = document.getElementById('editMembroId').value;
+            const novoNome = document.getElementById('editMembroNome').value.trim();
+            const novoCargo = document.getElementById('editMembroCargo').value;
+            
+            if (!novoNome) {
+                mostrarAlerta('erro', 'Nome é obrigatório');
+                return;
+            }
+            
+            const membro = membros.find(m => m.id == membroId);
+            if (membro) {
+                const nomeAntigo = membro.nome;
+                membro.nome = novoNome;
+                membro.cargo = novoCargo;
+                salvarMembros();
+                
+                // Se for o usuário atual, atualizar
+                if (membro.id === usuarioAtual.id) {
+                    usuarioAtual.nome = novoNome;
+                    usuarioAtual.cargo = novoCargo;
+                    localStorage.setItem('familyhub_usuario_logado', JSON.stringify(usuarioAtual));
+                    document.getElementById('sidebarUserName').textContent = novoNome;
+                }
+                
+                adicionarAtividade('edit', `${usuarioAtual.nome} editou o membro ${nomeAntigo} → ${novoNome}`);
+                atualizarListaMembros();
+                fecharModalEditarMembro();
+                mostrarAlerta('sucesso', 'Membro atualizado com sucesso!');
+            }
+        };
+
+        window.removerMembro = function(membroId) {
+            if (confirm('Tem certeza que deseja remover este membro da família?')) {
+                const membro = membros.find(m => m.id == membroId);
+                membros = membros.filter(m => m.id != membroId);
+                salvarMembros();
+                
+                adicionarAtividade('delete', `${usuarioAtual.nome} removeu o membro ${membro.nome}`);
+                atualizarListaMembros();
+                mostrarAlerta('sucesso', 'Membro removido com sucesso!');
+            }
+        };
+
+        window.abrirModalFavoritar = function(membroId) {
+            document.getElementById('favoritoMembroId').value = membroId;
+            document.getElementById('modalFavoritar').style.display = 'flex';
+        };
+
+        window.fecharModalFavoritar = function() {
+            document.getElementById('modalFavoritar').style.display = 'none';
+        };
+
+        window.salvarFavorito = function() {
+            const membroId = document.getElementById('favoritoMembroId').value;
+            const motivo = document.getElementById('favoritoMotivo').value;
+            
+            const membro = membros.find(m => m.id == membroId);
+            
+            // Verificar se já existe favorito
+            const existente = favoritos.findIndex(f => f.membroId == membroId && f.familiaId === usuarioAtual.familiaId);
+            
+            if (existente >= 0) {
+                // Remover favorito
+                favoritos.splice(existente, 1);
+                mostrarAlerta('sucesso', `⭐ ${membro.nome} removido dos favoritos`);
+            } else {
+                // Adicionar favorito
+                favoritos.push({
+                    membroId: membroId,
+                    familiaId: usuarioAtual.familiaId,
+                    motivo: motivo,
+                    data: new Date().toISOString(),
+                    usuario: usuarioAtual.id
+                });
+                mostrarAlerta('sucesso', `⭐ ${membro.nome} favoritado com sucesso!`);
+            }
+            
+            salvarFavoritos();
+            atualizarListaMembros();
+            fecharModalFavoritar();
+        };
+
+        window.verPerfilMembro = function(membroId) {
+            const membro = membros.find(m => m.id == membroId);
+            const tarefasMembro = tarefas.filter(t => t.responsavelId == membroId && t.familiaId === usuarioAtual.familiaId);
+            const concluidas = tarefasMembro.filter(t => t.concluida).length;
+            const taxa = tarefasMembro.length > 0 ? Math.round((concluidas / tarefasMembro.length) * 100) : 0;
+            
+            mostrarAlerta('info', 
+                `${membro.nome} · ${membro.pontos} pontos · Nível ${Math.floor(membro.pontos/100)+1}\n` +
+                `${concluidas}/${tarefasMembro.length} tarefas concluídas (${taxa}%)`
+            );
+        };
+
+        // ==================== FUNÇÕES DE TAREFAS ====================
         function carregarTarefasFamilia() {
             if (!usuarioAtual) return;
             
-            // Filtrar tarefas da família do usuário
             const tarefasFamilia = tarefas.filter(t => t.familiaId === usuarioAtual.familiaId);
-            
             atualizarListaTarefas(tarefasFamilia);
             atualizarCards(tarefasFamilia);
             atualizarCalendario(tarefasFamilia);
@@ -1986,14 +3852,14 @@
             const taskList = document.getElementById('taskList');
             const hoje = new Date().toISOString().split('T')[0];
             
-            const tarefasHoje = tarefasFamilia.filter(t => t.data === hoje);
+            const tarefasHoje = tarefasFamilia.filter(t => t.data === hoje).slice(0, 5);
             
             if (tarefasHoje.length === 0) {
                 taskList.innerHTML = `
                     <div style="text-align: center; padding: 40px; color: #8ba3c7;">
                         <i class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 15px;"></i>
                         <p>Nenhuma tarefa para hoje</p>
-                        <button class="btn-add" style="margin-top: 15px;" onclick="abrirModalTarefa()">
+                        <button class="btn-add" style="margin-top: 15px;" onclick="mostrarTelaDashboard('tarefas')">
                             <i class="fas fa-plus"></i> Criar tarefa
                         </button>
                     </div>
@@ -2010,13 +3876,100 @@
                                 ${tarefa.concluida ? '✓' : ''}
                             </div>
                             <div class="task-details">
-                                <div class="task-title" style="${tarefa.concluida ? 'text-decoration: line-through; opacity: 0.6;' : ''}">
+                                <div class="task-title">
                                     ${tarefa.titulo}
+                                    <span class="task-points">+10 pts</span>
                                 </div>
                                 <div class="task-meta">
                                     <span><i class="fas fa-user"></i> ${responsavel ? responsavel.nome : 'Todos'}</span>
-                                    ${tarefa.descricao ? `<span><i class="fas fa-align-left"></i> ${tarefa.descricao.substring(0,20)}...</span>` : ''}
+                                    <span><i class="fas fa-flag"></i> ${tarefa.prioridade || 'média'}</span>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="task-actions">
+                            <button class="task-btn" onclick="editarTarefa(${tarefa.id})">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function atualizarTodasTarefas() {
+            const taskList = document.getElementById('allTasksList');
+            const tarefasFamilia = tarefas.filter(t => t.familiaId === usuarioAtual.familiaId);
+            
+            let tarefasFiltradas = [];
+            const hoje = new Date().toISOString().split('T')[0];
+            const hojeObj = new Date(hoje);
+            const seteDias = new Date(hojeObj);
+            seteDias.setDate(hojeObj.getDate() + 7);
+            
+            switch(filtroTarefaAtual) {
+                case 'hoje':
+                    tarefasFiltradas = tarefasFamilia.filter(t => t.data === hoje);
+                    break;
+                case 'semana':
+                    tarefasFiltradas = tarefasFamilia.filter(t => {
+                        const dataTarefa = new Date(t.data);
+                        return dataTarefa >= hojeObj && dataTarefa <= seteDias;
+                    });
+                    break;
+                case 'pendentes':
+                    tarefasFiltradas = tarefasFamilia.filter(t => !t.concluida);
+                    break;
+                case 'concluidas':
+                    tarefasFiltradas = tarefasFamilia.filter(t => t.concluida);
+                    break;
+                case 'atrasadas':
+                    tarefasFiltradas = tarefasFamilia.filter(t => !t.concluida && t.data < hoje);
+                    break;
+                default:
+                    tarefasFiltradas = tarefasFamilia;
+            }
+            
+            // Ordenar por data
+            tarefasFiltradas.sort((a, b) => new Date(a.data) - new Date(b.data));
+            
+            if (tarefasFiltradas.length === 0) {
+                taskList.innerHTML = `
+                    <div style="text-align: center; padding: 60px; color: #8ba3c7;">
+                        <i class="fas fa-tasks" style="font-size: 4rem; margin-bottom: 20px;"></i>
+                        <h3 style="color: #ffffff;">Nenhuma tarefa encontrada</h3>
+                        <p>Tente outro filtro ou crie uma nova tarefa</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            taskList.innerHTML = tarefasFiltradas.map(tarefa => {
+                const responsavel = membros.find(m => m.id === tarefa.responsavelId);
+                const dataObj = new Date(tarefa.data);
+                const dataFormatada = dataObj.toLocaleDateString('pt-BR');
+                const isAtrasada = !tarefa.concluida && tarefa.data < hoje;
+                
+                let prioridadeClass = '';
+                let prioridadeLabel = tarefa.prioridade || 'média';
+                
+                return `
+                    <div class="task-item" data-id="${tarefa.id}" style="${isAtrasada ? 'border-left: 4px solid #ff6b6b;' : ''}">
+                        <div class="task-info">
+                            <div class="task-check ${tarefa.concluida ? 'completed' : ''}" onclick="toggleTarefa(${tarefa.id})">
+                                ${tarefa.concluida ? '✓' : ''}
+                            </div>
+                            <div class="task-details">
+                                <div class="task-title">
+                                    ${tarefa.titulo}
+                                    <span class="task-points">+10 pts</span>
+                                </div>
+                                <div class="task-meta">
+                                    <span><i class="fas fa-calendar"></i> ${dataFormatada}</span>
+                                    <span><i class="fas fa-user"></i> ${responsavel ? responsavel.nome : 'Todos'}</span>
+                                    <span><i class="fas fa-flag"></i> ${prioridadeLabel}</span>
+                                    ${isAtrasada ? '<span style="color: #ff6b6b;">Atrasada</span>' : ''}
+                                </div>
+                                ${tarefa.descricao ? `<div style="color: #8ba3c7; font-size: 0.8rem; margin-top: 5px;">${tarefa.descricao}</div>` : ''}
                             </div>
                         </div>
                         <div class="task-actions">
@@ -2032,6 +3985,29 @@
             }).join('');
         }
 
+        function atualizarEstatisticasTarefas() {
+            const tarefasFamilia = tarefas.filter(t => t.familiaId === usuarioAtual.familiaId);
+            const total = tarefasFamilia.length;
+            const concluidas = tarefasFamilia.filter(t => t.concluida).length;
+            const pendentes = total - concluidas;
+            
+            document.getElementById('totalTarefasStat').textContent = total;
+            document.getElementById('concluidasStat').textContent = concluidas;
+            document.getElementById('pendentesStat').textContent = pendentes;
+        }
+
+        window.filtrarTarefas = function(filtro) {
+            filtroTarefaAtual = filtro;
+            
+            // Atualizar botões ativos
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            atualizarTodasTarefas();
+        };
+
         function atualizarCards(tarefasFamilia) {
             const hoje = new Date().toISOString().split('T')[0];
             const tarefasHoje = tarefasFamilia.filter(t => t.data === hoje);
@@ -2042,7 +4018,6 @@
             document.getElementById('tarefasConcluidasHoje').textContent = `${concluidasHoje} concluídas`;
             document.getElementById('tarefasPendentes').textContent = pendentes;
             
-            // Contar membros da família
             const membrosFamilia = membros.filter(m => m.familiaId === usuarioAtual.familiaId);
             document.getElementById('totalMembros').textContent = membrosFamilia.length;
             
@@ -2061,12 +4036,26 @@
         window.toggleTarefa = function(id) {
             const tarefa = tarefas.find(t => t.id === id);
             if (tarefa) {
+                const estavaConcluida = tarefa.concluida;
                 tarefa.concluida = !tarefa.concluida;
                 salvarTarefas();
                 
+                // Se acabou de concluir, dar pontos
+                if (!estavaConcluida && tarefa.concluida && tarefa.responsavelId && tarefa.responsavelId !== 'todos') {
+                    adicionarPontos(tarefa.responsavelId, 10);
+                    adicionarAtividade('pontos', `${usuarioAtual.nome} ganhou 10 pontos por concluir "${tarefa.titulo}"`);
+                }
+                
                 const tarefasFamilia = tarefas.filter(t => t.familiaId === usuarioAtual.familiaId);
                 atualizarListaTarefas(tarefasFamilia);
+                atualizarTodasTarefas();
                 atualizarCards(tarefasFamilia);
+                atualizarEstatisticasTarefas();
+                
+                // Atualizar detalhes do dia se estiver visível
+                if (diaSelecionado) {
+                    mostrarDetalhesDia(diaSelecionado);
+                }
                 
                 adicionarAtividade(
                     tarefa.concluida ? 'check' : 'undo',
@@ -2083,6 +4072,7 @@
             document.getElementById('taskTitle').value = '';
             document.getElementById('taskDescription').value = '';
             document.getElementById('taskDate').value = new Date().toISOString().split('T')[0];
+            document.getElementById('taskPriority').value = 'media';
             document.getElementById('editingTaskId').value = '';
             
             // Carregar membros da família no select
@@ -2103,6 +4093,7 @@
                     document.getElementById('taskDescription').value = tarefa.descricao || '';
                     document.getElementById('taskDate').value = tarefa.data;
                     document.getElementById('taskAssignee').value = tarefa.responsavelId || '';
+                    document.getElementById('taskPriority').value = tarefa.prioridade || 'media';
                     document.getElementById('editingTaskId').value = tarefaId;
                 }
             } else {
@@ -2121,6 +4112,7 @@
             const descricao = document.getElementById('taskDescription').value.trim();
             const data = document.getElementById('taskDate').value;
             const responsavelId = document.getElementById('taskAssignee').value;
+            const prioridade = document.getElementById('taskPriority').value;
             const editingId = document.getElementById('editingTaskId').value;
             
             if (!titulo) {
@@ -2141,13 +4133,20 @@
                     tarefa.descricao = descricao;
                     tarefa.data = data;
                     tarefa.responsavelId = responsavelId;
+                    tarefa.prioridade = prioridade;
                     
                     salvarTarefas();
                     
                     const tarefasFamilia = tarefas.filter(t => t.familiaId === usuarioAtual.familiaId);
                     atualizarListaTarefas(tarefasFamilia);
+                    atualizarTodasTarefas();
                     atualizarCards(tarefasFamilia);
                     atualizarCalendario(tarefasFamilia);
+                    atualizarEstatisticasTarefas();
+                    
+                    if (diaSelecionado) {
+                        mostrarDetalhesDia(diaSelecionado);
+                    }
                     
                     adicionarAtividade('edit', `${usuarioAtual.nome} editou a tarefa "${titulo}"`);
                 }
@@ -2159,6 +4158,7 @@
                     descricao: descricao,
                     data: data,
                     responsavelId: responsavelId,
+                    prioridade: prioridade,
                     criadoPor: usuarioAtual.id,
                     concluida: false,
                     dataCriacao: new Date().toISOString()
@@ -2169,13 +4169,20 @@
                 
                 const tarefasFamilia = tarefas.filter(t => t.familiaId === usuarioAtual.familiaId);
                 atualizarListaTarefas(tarefasFamilia);
+                atualizarTodasTarefas();
                 atualizarCards(tarefasFamilia);
                 atualizarCalendario(tarefasFamilia);
+                atualizarEstatisticasTarefas();
+                
+                if (diaSelecionado) {
+                    mostrarDetalhesDia(diaSelecionado);
+                }
                 
                 adicionarAtividade('add', `${usuarioAtual.nome} criou a tarefa "${titulo}"`);
             }
             
             fecharModalTarefa();
+            atualizarBadges();
         };
 
         window.editarTarefa = function(id) {
@@ -2190,8 +4197,15 @@
                 
                 const tarefasFamilia = tarefas.filter(t => t.familiaId === usuarioAtual.familiaId);
                 atualizarListaTarefas(tarefasFamilia);
+                atualizarTodasTarefas();
                 atualizarCards(tarefasFamilia);
                 atualizarCalendario(tarefasFamilia);
+                atualizarEstatisticasTarefas();
+                atualizarBadges();
+                
+                if (diaSelecionado) {
+                    mostrarDetalhesDia(diaSelecionado);
+                }
                 
                 if (tarefa) {
                     adicionarAtividade('delete', `${usuarioAtual.nome} excluiu a tarefa "${tarefa.titulo}"`);
@@ -2199,7 +4213,753 @@
             }
         };
 
-        // Atividades
+        // ==================== FUNÇÕES DE CALENDÁRIO ====================
+        let currentDate = new Date();
+
+        function atualizarCalendario(tarefasFamilia) {
+            const monthNames = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+            document.getElementById('currentMonth').textContent = `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
+            
+            const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+            const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+            
+            let days = [];
+            
+            for (let i = 0; i < firstDay.getDay(); i++) {
+                days.push(null);
+            }
+            
+            const hoje = new Date().toISOString().split('T')[0];
+            
+            for (let d = 1; d <= lastDay.getDate(); d++) {
+                const dataStr = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+                const tarefasDoDia = tarefasFamilia.filter(t => t.data === dataStr);
+                const temTarefa = tarefasDoDia.length > 0;
+                const temLembrete = lembretes.some(l => l.data === dataStr);
+                const isToday = dataStr === hoje;
+                const isSelected = dataStr === diaSelecionado;
+                
+                days.push({
+                    dia: d,
+                    data: dataStr,
+                    temTarefa: temTarefa,
+                    tarefasCount: tarefasDoDia.length,
+                    temLembrete: temLembrete,
+                    isToday: isToday,
+                    isSelected: isSelected
+                });
+            }
+            
+            const calendarDays = document.getElementById('calendarDays');
+            calendarDays.innerHTML = days.map(day => {
+                if (day === null) {
+                    return '<div class="calendar-day" style="opacity: 0.3;"></div>';
+                }
+                
+                let classes = 'calendar-day';
+                if (day.temTarefa) classes += ' has-task';
+                if (day.tarefasCount > 1) classes += ' has-multiple';
+                if (day.isToday) classes += ' today';
+                if (day.isSelected) classes += ' selected';
+                
+                return `
+                    <div class="${classes}" onclick="selecionarDia('${day.data}')">
+                        <span class="day-number">${day.dia}</span>
+                        ${day.tarefasCount > 0 ? `<span class="task-count">${day.tarefasCount}</span>` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        window.selecionarDia = function(data) {
+            diaSelecionado = data;
+            mostrarDetalhesDia(data);
+            
+            // Atualizar calendário para mostrar dia selecionado
+            const tarefasFamilia = tarefas.filter(t => t.familiaId === usuarioAtual.familiaId);
+            atualizarCalendario(tarefasFamilia);
+        };
+
+        function mostrarDetalhesDia(data) {
+            const dayDetails = document.getElementById('dayDetails');
+            const selectedDateEl = document.getElementById('selectedDate');
+            const dayTasksList = document.getElementById('dayTasksList');
+            
+            const dataObj = new Date(data + 'T12:00:00');
+            const dataFormatada = dataObj.toLocaleDateString('pt-BR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            selectedDateEl.textContent = dataFormatada;
+            
+            const tarefasDoDia = tarefas.filter(t => t.familiaId === usuarioAtual.familiaId && t.data === data);
+            const lembretesDoDia = lembretes.filter(l => l.familiaId === usuarioAtual.familiaId && l.data === data);
+            
+            if (tarefasDoDia.length === 0 && lembretesDoDia.length === 0) {
+                dayTasksList.innerHTML = `
+                    <div class="empty-day">
+                        <i class="fas fa-calendar-day"></i>
+                        <p>Nenhuma tarefa ou lembrete para este dia</p>
+                        <button class="btn-add" style="margin-top: 15px;" onclick="abrirModalTarefa()">
+                            <i class="fas fa-plus"></i> Adicionar tarefa
+                        </button>
+                    </div>
+                `;
+            } else {
+                let html = '';
+                
+                // Mostrar tarefas
+                tarefasDoDia.forEach(tarefa => {
+                    const responsavel = membros.find(m => m.id === tarefa.responsavelId);
+                    html += `
+                        <div class="day-task-item">
+                            <div class="day-task-check ${tarefa.concluida ? 'completed' : ''}" onclick="toggleTarefa(${tarefa.id})">
+                                ${tarefa.concluida ? '✓' : ''}
+                            </div>
+                            <div class="day-task-info">
+                                <div class="day-task-title">📋 ${tarefa.titulo}</div>
+                                <div class="day-task-meta">
+                                    <span>👤 ${responsavel ? responsavel.nome : 'Todos'}</span>
+                                    <span>🎯 ${tarefa.prioridade || 'média'}</span>
+                                </div>
+                            </div>
+                            <button class="task-btn" onclick="editarTarefa(${tarefa.id})">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                    `;
+                });
+                
+                // Mostrar lembretes
+                lembretesDoDia.forEach(lembrete => {
+                    html += `
+                        <div class="day-task-item">
+                            <div class="day-task-check ${lembrete.concluido ? 'completed' : ''}" onclick="toggleLembrete(${lembrete.id})">
+                                ${lembrete.concluido ? '✓' : ''}
+                            </div>
+                            <div class="day-task-info">
+                                <div class="day-task-title">🔔 ${lembrete.titulo}</div>
+                                <div class="day-task-meta">
+                                    <span>📌 ${lembrete.prioridade || 'média'}</span>
+                                </div>
+                            </div>
+                            <button class="task-btn" onclick="editarLembrete(${lembrete.id})">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                    `;
+                });
+                
+                dayTasksList.innerHTML = html;
+            }
+            
+            dayDetails.style.display = 'block';
+        }
+
+        window.navegarMes = function(direcao) {
+            currentDate.setMonth(currentDate.getMonth() + direcao);
+            const tarefasFamilia = tarefas.filter(t => t.familiaId === usuarioAtual.familiaId);
+            atualizarCalendario(tarefasFamilia);
+        };
+
+        // ==================== FUNÇÕES DE CHAT ====================
+        function atualizarChat() {
+            const chatMessages = document.getElementById('chatMessages');
+            const mensagensFamilia = mensagens.filter(m => m.familiaId === usuarioAtual.familiaId).sort((a,b) => new Date(a.data) - new Date(b.data));
+            
+            if (mensagensFamilia.length === 0) {
+                chatMessages.innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: #8ba3c7;">
+                        <i class="fas fa-comments" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                        <p>Nenhuma mensagem ainda</p>
+                        <p style="font-size: 0.9rem;">Seja o primeiro a deixar um recado!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            chatMessages.innerHTML = mensagensFamilia.map(msg => {
+                const autor = membros.find(m => m.id == msg.autorId);
+                const data = new Date(msg.data);
+                const hora = data.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+                const isOwn = msg.autorId == usuarioAtual.id;
+                
+                return `
+                    <div class="message ${isOwn ? 'own-message' : ''}">
+                        <div class="message-avatar">
+                            ${autor?.foto ? `<img src="${autor.foto}" alt="${autor.nome}">` : `<span>${autor?.nome?.charAt(0) || '?'}</span>`}
+                        </div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="message-author">${autor?.nome || 'Desconhecido'}</span>
+                                <span class="message-time">${hora}</span>
+                            </div>
+                            <div class="message-text">${msg.texto}</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        window.enviarMensagem = function() {
+            const input = document.getElementById('chatInput');
+            const texto = input.value.trim();
+            
+            if (!texto) {
+                mostrarAlerta('erro', 'Digite uma mensagem');
+                return;
+            }
+            
+            const mensagem = {
+                id: Date.now(),
+                familiaId: usuarioAtual.familiaId,
+                autorId: usuarioAtual.id,
+                texto: texto,
+                data: new Date().toISOString()
+            };
+            
+            mensagens.push(mensagem);
+            salvarMensagens();
+            
+            input.value = '';
+            atualizarChat();
+            
+            adicionarPontos(usuarioAtual.id, 1);
+        };
+
+        // ==================== FUNÇÕES DE GALERIA ====================
+        function atualizarGaleria() {
+            const galleryGrid = document.getElementById('galleryGrid');
+            const fotosFamilia = fotos.filter(f => f.familiaId === usuarioAtual.familiaId);
+            
+            if (fotosFamilia.length === 0) {
+                galleryGrid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 60px; color: #8ba3c7;">
+                        <i class="fas fa-images" style="font-size: 4rem; margin-bottom: 20px;"></i>
+                        <h3 style="color: #ffffff;">Nenhuma foto ainda</h3>
+                        <p>Compartilhe momentos da família</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            galleryGrid.innerHTML = fotosFamilia.map(foto => {
+                const autor = membros.find(m => m.id == foto.autorId);
+                const data = new Date(foto.data);
+                const dataFormatada = data.toLocaleDateString('pt-BR');
+                
+                return `
+                    <div class="gallery-item" onclick="verFoto('${foto.id}')">
+                        <img src="${foto.url}" alt="${foto.titulo}" class="gallery-image">
+                        <div class="gallery-info">
+                            <div class="gallery-title">${foto.titulo}</div>
+                            <div class="gallery-meta">
+                                <span><i class="fas fa-user"></i> ${autor?.nome || 'Desconhecido'}</span>
+                                <span><i class="fas fa-calendar"></i> ${dataFormatada}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        window.abrirModalUploadFoto = function() {
+            document.getElementById('modalUploadFoto').style.display = 'flex';
+        };
+
+        window.fecharModalUploadFoto = function() {
+            document.getElementById('modalUploadFoto').style.display = 'none';
+        };
+
+        window.salvarFoto = function() {
+            const titulo = document.getElementById('fotoTitulo').value.trim();
+            const arquivo = document.getElementById('fotoArquivo').files[0];
+            
+            if (!titulo) {
+                mostrarAlerta('erro', 'Título é obrigatório');
+                return;
+            }
+            
+            if (!arquivo) {
+                mostrarAlerta('erro', 'Selecione uma imagem');
+                return;
+            }
+            
+            if (arquivo.size > 10 * 1024 * 1024) {
+                mostrarAlerta('erro', 'A imagem deve ter no máximo 10MB');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const foto = {
+                    id: Date.now(),
+                    familiaId: usuarioAtual.familiaId,
+                    titulo: titulo,
+                    url: e.target.result,
+                    autorId: usuarioAtual.id,
+                    data: new Date().toISOString()
+                };
+                
+                fotos.push(foto);
+                salvarFotos();
+                
+                adicionarAtividade('add', `${usuarioAtual.nome} adicionou a foto "${titulo}"`);
+                fecharModalUploadFoto();
+                atualizarGaleria();
+                mostrarAlerta('sucesso', 'Foto adicionada com sucesso!');
+            };
+            reader.readAsDataURL(arquivo);
+        };
+
+        window.verFoto = function(fotoId) {
+            const foto = fotos.find(f => f.id == fotoId);
+            if (foto) {
+                window.open(foto.url, '_blank');
+            }
+        };
+
+        // ==================== FUNÇÕES DE FINANÇAS ====================
+        function atualizarFinancas() {
+            const transacoesFamilia = transacoes.filter(t => t.familiaId === usuarioAtual.familiaId);
+            
+            let saldo = 0;
+            let receitas = 0;
+            let despesas = 0;
+            
+            transacoesFamilia.forEach(t => {
+                if (t.tipo === 'receita') {
+                    receitas += t.valor;
+                    saldo += t.valor;
+                } else {
+                    despesas += t.valor;
+                    saldo -= t.valor;
+                }
+            });
+            
+            document.getElementById('saldoTotal').textContent = `R$ ${saldo.toFixed(2)}`;
+            document.getElementById('totalReceitas').textContent = `R$ ${receitas.toFixed(2)}`;
+            document.getElementById('totalDespesas').textContent = `R$ ${despesas.toFixed(2)}`;
+            
+            const transacoesList = document.getElementById('transacoesList');
+            
+            if (transacoesFamilia.length === 0) {
+                transacoesList.innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: #8ba3c7;">
+                        <i class="fas fa-coins" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                        <p>Nenhuma transação registrada</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            const ultimasTransacoes = transacoesFamilia.sort((a, b) => new Date(b.data) - new Date(a.data)).slice(0, 10);
+            
+            transacoesList.innerHTML = ultimasTransacoes.map(t => {
+                const data = new Date(t.data);
+                const dataFormatada = data.toLocaleDateString('pt-BR');
+                
+                return `
+                    <div class="transacao-item">
+                        <div class="transacao-info">
+                            <div class="transacao-icon">
+                                <i class="fas ${t.tipo === 'receita' ? 'fa-arrow-down' : 'fa-arrow-up'}"></i>
+                            </div>
+                            <div>
+                                <div class="transacao-descricao">${t.descricao}</div>
+                                <div class="transacao-data">${dataFormatada}</div>
+                            </div>
+                        </div>
+                        <div class="transacao-valor ${t.tipo === 'receita' ? 'receita' : 'despesa'}">
+                            ${t.tipo === 'receita' ? '+' : '-'} R$ ${t.valor.toFixed(2)}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        window.abrirModalTransacao = function() {
+            document.getElementById('transacaoData').value = new Date().toISOString().split('T')[0];
+            document.getElementById('modalTransacao').style.display = 'flex';
+        };
+
+        window.fecharModalTransacao = function() {
+            document.getElementById('modalTransacao').style.display = 'none';
+        };
+
+        window.salvarTransacao = function() {
+            const descricao = document.getElementById('transacaoDescricao').value.trim();
+            const valor = parseFloat(document.getElementById('transacaoValor').value);
+            const tipo = document.getElementById('transacaoTipo').value;
+            const data = document.getElementById('transacaoData').value;
+            
+            if (!descricao || !valor || !data) {
+                mostrarAlerta('erro', 'Preencha todos os campos');
+                return;
+            }
+            
+            if (valor <= 0) {
+                mostrarAlerta('erro', 'Valor deve ser maior que zero');
+                return;
+            }
+            
+            const transacao = {
+                id: Date.now(),
+                familiaId: usuarioAtual.familiaId,
+                descricao: descricao,
+                valor: valor,
+                tipo: tipo,
+                data: data,
+                autorId: usuarioAtual.id,
+                dataCriacao: new Date().toISOString()
+            };
+            
+            transacoes.push(transacao);
+            salvarTransacoes();
+            
+            adicionarAtividade('add', `${usuarioAtual.nome} adicionou ${tipo === 'receita' ? 'receita' : 'despesa'} de R$ ${valor.toFixed(2)}`);
+            fecharModalTransacao();
+            atualizarFinancas();
+            mostrarAlerta('sucesso', 'Transação salva com sucesso!');
+        };
+
+        // ==================== FUNÇÕES DE LEMBRETES ====================
+        function atualizarLembretes() {
+            const lembretesList = document.getElementById('lembretesList');
+            const lembretesFamilia = lembretes.filter(l => l.familiaId === usuarioAtual.familiaId)
+                .sort((a, b) => new Date(a.data) - new Date(b.data));
+            
+            if (lembretesFamilia.length === 0) {
+                lembretesList.innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: #8ba3c7;">
+                        <i class="fas fa-bell" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                        <p>Nenhum lembrete</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            lembretesList.innerHTML = lembretesFamilia.map(lembrete => {
+                const dataObj = new Date(lembrete.data);
+                const dataFormatada = dataObj.toLocaleDateString('pt-BR');
+                const hoje = new Date().toISOString().split('T')[0];
+                const isAtrasado = !lembrete.concluido && lembrete.data < hoje;
+                
+                let prioridadeClass = 'prioridade-media';
+                if (lembrete.prioridade === 'alta') prioridadeClass = 'prioridade-alta';
+                if (lembrete.prioridade === 'baixa') prioridadeClass = 'prioridade-baixa';
+                
+                return `
+                    <div class="lembrete-item">
+                        <div class="lembrete-check ${lembrete.concluido ? 'completed' : ''}" onclick="toggleLembrete(${lembrete.id})">
+                            ${lembrete.concluido ? '✓' : ''}
+                        </div>
+                        <div class="lembrete-info">
+                            <div class="lembrete-titulo" style="${lembrete.concluido ? 'text-decoration: line-through; opacity: 0.6;' : ''}">
+                                ${lembrete.titulo}
+                            </div>
+                            <div class="lembrete-meta">
+                                <span class="lembrete-data">
+                                    <i class="fas fa-calendar"></i> ${dataFormatada}
+                                    ${isAtrasado ? '<span style="color: #ff6b6b;"> (atrasado)</span>' : ''}
+                                </span>
+                                <span class="lembrete-prioridade ${prioridadeClass}">
+                                    ${lembrete.prioridade || 'média'}
+                                </span>
+                            </div>
+                            ${lembrete.descricao ? `<div style="color: #8ba3c7; font-size: 0.8rem; margin-top: 5px;">${lembrete.descricao}</div>` : ''}
+                        </div>
+                        <div class="task-actions">
+                            <button class="task-btn" onclick="editarLembrete(${lembrete.id})">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="task-btn delete" onclick="excluirLembrete(${lembrete.id})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        window.abrirModalLembrete = function(lembreteId = null) {
+            document.getElementById('modalLembrete').style.display = 'flex';
+            document.getElementById('lembreteData').value = new Date().toISOString().split('T')[0];
+            document.getElementById('lembretePrioridade').value = 'media';
+            document.getElementById('editingLembreteId').value = '';
+            
+            if (lembreteId) {
+                const lembrete = lembretes.find(l => l.id == lembreteId);
+                if (lembrete) {
+                    document.getElementById('lembreteTitulo').value = lembrete.titulo;
+                    document.getElementById('lembreteDescricao').value = lembrete.descricao || '';
+                    document.getElementById('lembreteData').value = lembrete.data;
+                    document.getElementById('lembretePrioridade').value = lembrete.prioridade || 'media';
+                    document.getElementById('editingLembreteId').value = lembreteId;
+                }
+            }
+        };
+
+        window.fecharModalLembrete = function() {
+            document.getElementById('modalLembrete').style.display = 'none';
+        };
+
+        window.salvarLembrete = function() {
+            const titulo = document.getElementById('lembreteTitulo').value.trim();
+            const descricao = document.getElementById('lembreteDescricao').value.trim();
+            const data = document.getElementById('lembreteData').value;
+            const prioridade = document.getElementById('lembretePrioridade').value;
+            const editingId = document.getElementById('editingLembreteId')?.value;
+            
+            if (!titulo || !data) {
+                mostrarAlerta('erro', 'Preencha título e data');
+                return;
+            }
+            
+            if (editingId) {
+                const lembrete = lembretes.find(l => l.id == editingId);
+                if (lembrete) {
+                    lembrete.titulo = titulo;
+                    lembrete.descricao = descricao;
+                    lembrete.data = data;
+                    lembrete.prioridade = prioridade;
+                    
+                    salvarLembretes();
+                    adicionarAtividade('edit', `${usuarioAtual.nome} editou o lembrete "${titulo}"`);
+                }
+            } else {
+                const lembrete = {
+                    id: Date.now(),
+                    familiaId: usuarioAtual.familiaId,
+                    titulo: titulo,
+                    descricao: descricao,
+                    data: data,
+                    prioridade: prioridade,
+                    concluido: false,
+                    autorId: usuarioAtual.id,
+                    dataCriacao: new Date().toISOString()
+                };
+                
+                lembretes.push(lembrete);
+                salvarLembretes();
+                adicionarAtividade('add', `${usuarioAtual.nome} criou o lembrete "${titulo}"`);
+            }
+            
+            fecharModalLembrete();
+            atualizarLembretes();
+            
+            if (diaSelecionado) {
+                mostrarDetalhesDia(diaSelecionado);
+            }
+            
+            mostrarAlerta('sucesso', 'Lembrete salvo com sucesso!');
+        };
+
+        window.toggleLembrete = function(id) {
+            const lembrete = lembretes.find(l => l.id === id);
+            if (lembrete) {
+                lembrete.concluido = !lembrete.concluido;
+                salvarLembretes();
+                atualizarLembretes();
+                
+                if (diaSelecionado) {
+                    mostrarDetalhesDia(diaSelecionado);
+                }
+                
+                if (lembrete.concluido) {
+                    adicionarPontos(usuarioAtual.id, 5);
+                    adicionarAtividade('check', `${usuarioAtual.nome} concluiu o lembrete "${lembrete.titulo}"`);
+                }
+            }
+        };
+
+        window.editarLembrete = function(id) {
+            abrirModalLembrete(id);
+        };
+
+        window.excluirLembrete = function(id) {
+            if (confirm('Excluir este lembrete?')) {
+                const lembrete = lembretes.find(l => l.id === id);
+                lembretes = lembretes.filter(l => l.id !== id);
+                salvarLembretes();
+                atualizarLembretes();
+                
+                if (diaSelecionado) {
+                    mostrarDetalhesDia(diaSelecionado);
+                }
+                
+                adicionarAtividade('delete', `${usuarioAtual.nome} excluiu o lembrete "${lembrete.titulo}"`);
+                mostrarAlerta('sucesso', 'Lembrete excluído');
+            }
+        };
+
+        // ==================== FUNÇÕES DE DOCUMENTOS ====================
+        function atualizarDocumentos() {
+            const documentosGrid = document.getElementById('documentosGrid');
+            const documentosFamilia = documentos.filter(d => d.familiaId === usuarioAtual.familiaId);
+            
+            if (documentosFamilia.length === 0) {
+                documentosGrid.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 60px; color: #8ba3c7;">
+                        <i class="fas fa-file-alt" style="font-size: 4rem; margin-bottom: 20px;"></i>
+                        <h3 style="color: #ffffff;">Nenhum documento</h3>
+                        <p>Adicione documentos importantes</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            documentosGrid.innerHTML = documentosFamilia.map(doc => {
+                const autor = membros.find(m => m.id == doc.autorId);
+                const data = new Date(doc.data);
+                const dataFormatada = data.toLocaleDateString('pt-BR');
+                
+                let icone = 'fa-file';
+                if (doc.tipo?.includes('pdf')) icone = 'fa-file-pdf';
+                else if (doc.tipo?.includes('word')) icone = 'fa-file-word';
+                else if (doc.tipo?.includes('excel')) icone = 'fa-file-excel';
+                else if (doc.tipo?.includes('image')) icone = 'fa-file-image';
+                
+                return `
+                    <div class="documento-item" onclick="verDocumento('${doc.id}')">
+                        <div class="documento-icon">
+                            <i class="fas ${icone}"></i>
+                        </div>
+                        <div class="documento-info">
+                            <div class="documento-nome">${doc.nome}</div>
+                            <div class="documento-meta">
+                                <span><i class="fas fa-user"></i> ${autor?.nome || 'Desconhecido'}</span>
+                                <span><i class="fas fa-calendar"></i> ${dataFormatada}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        window.abrirModalDocumento = function() {
+            document.getElementById('modalDocumento').style.display = 'flex';
+        };
+
+        window.fecharModalDocumento = function() {
+            document.getElementById('modalDocumento').style.display = 'none';
+        };
+
+        window.salvarDocumento = function() {
+            const nome = document.getElementById('documentoNome').value.trim();
+            const arquivo = document.getElementById('documentoArquivo').files[0];
+            
+            if (!nome) {
+                mostrarAlerta('erro', 'Nome é obrigatório');
+                return;
+            }
+            
+            if (!arquivo) {
+                mostrarAlerta('erro', 'Selecione um arquivo');
+                return;
+            }
+            
+            if (arquivo.size > 20 * 1024 * 1024) {
+                mostrarAlerta('erro', 'Arquivo deve ter no máximo 20MB');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const documento = {
+                    id: Date.now(),
+                    familiaId: usuarioAtual.familiaId,
+                    nome: nome,
+                    tipo: arquivo.type,
+                    url: e.target.result,
+                    autorId: usuarioAtual.id,
+                    data: new Date().toISOString()
+                };
+                
+                documentos.push(documento);
+                salvarDocumentos();
+                
+                adicionarAtividade('add', `${usuarioAtual.nome} adicionou o documento "${nome}"`);
+                fecharModalDocumento();
+                atualizarDocumentos();
+                mostrarAlerta('sucesso', 'Documento adicionado!');
+            };
+            reader.readAsDataURL(arquivo);
+        };
+
+        window.verDocumento = function(docId) {
+            const doc = documentos.find(d => d.id == docId);
+            if (doc) {
+                window.open(doc.url, '_blank');
+            }
+        };
+
+        // ==================== FUNÇÕES DE RANKING ====================
+        function atualizarRanking() {
+            const rankingList = document.getElementById('rankingList');
+            const membrosFamilia = membros.filter(m => m.familiaId === usuarioAtual.familiaId)
+                .sort((a, b) => b.pontos - a.pontos);
+            
+            if (membrosFamilia.length === 0) {
+                rankingList.innerHTML = '<p style="color: #8ba3c7; text-align: center;">Nenhum membro no ranking</p>';
+                return;
+            }
+            
+            rankingList.innerHTML = membrosFamilia.map((membro, index) => {
+                const nivel = Math.floor(membro.pontos / 100) + 1;
+                const pontosProximoNivel = (nivel * 100) - membro.pontos;
+                const progresso = (membro.pontos % 100);
+                
+                let posClass = '';
+                if (index === 0) posClass = 'top1';
+                else if (index === 1) posClass = 'top2';
+                else if (index === 2) posClass = 'top3';
+                
+                return `
+                    <div class="ranking-item">
+                        <div class="ranking-position ${posClass}">#${index + 1}</div>
+                        <div class="ranking-avatar">
+                            ${membro.foto ? `<img src="${membro.foto}" alt="${membro.nome}">` : `<span>${membro.nome.charAt(0)}</span>`}
+                        </div>
+                        <div class="ranking-info">
+                            <div class="ranking-name">${membro.nome} ${membro.cargo === 'admin' ? '👑' : ''}</div>
+                            <div class="ranking-points">${membro.pontos} pontos</div>
+                            <div class="ranking-level">
+                                <span>Nível ${nivel}</span>
+                                <div class="level-bar">
+                                    <div class="level-progress" style="width: ${progresso}%;"></div>
+                                </div>
+                                <span>${pontosProximoNivel} para nível ${nivel + 1}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // ==================== FUNÇÕES DE PONTOS ====================
+        function adicionarPontos(membroId, pontos) {
+            const membro = membros.find(m => m.id == membroId);
+            if (membro) {
+                const nivelAntigo = Math.floor(membro.pontos / 100) + 1;
+                membro.pontos = (membro.pontos || 0) + pontos;
+                const nivelNovo = Math.floor(membro.pontos / 100) + 1;
+                
+                salvarMembros();
+                
+                if (membroId == usuarioAtual.id) {
+                    usuarioAtual.pontos = membro.pontos;
+                    localStorage.setItem('familyhub_usuario_logado', JSON.stringify(usuarioAtual));
+                }
+                
+                if (nivelNovo > nivelAntigo) {
+                    membro.nivel = nivelNovo;
+                    mostrarAlerta('sucesso', `🎉 Parabéns! ${membro.nome} subiu para o nível ${nivelNovo}!`);
+                    adicionarAtividade('levelup', `${membro.nome} alcançou o nível ${nivelNovo}!`);
+                }
+            }
+        }
+
+        // ==================== FUNÇÕES DE ATIVIDADES ====================
         function adicionarAtividade(tipo, descricao) {
             const atividade = {
                 id: Date.now(),
@@ -2218,11 +4978,7 @@
 
         function atualizarListaAtividades() {
             const activityList = document.getElementById('activityList');
-            
-            const atividadesFamilia = atividades.filter(a => {
-                // Simplificação: mostrar todas as atividades por enquanto
-                return true;
-            }).slice(0, 10);
+            const atividadesFamilia = atividades.slice(0, 10);
             
             if (atividadesFamilia.length === 0) {
                 activityList.innerHTML = `
@@ -2244,6 +5000,8 @@
                 else if (ativ.tipo === 'check') icone = 'fa-check-circle';
                 else if (ativ.tipo === 'undo') icone = 'fa-undo';
                 else if (ativ.tipo === 'edit') icone = 'fa-edit';
+                else if (ativ.tipo === 'pontos') icone = 'fa-star';
+                else if (ativ.tipo === 'levelup') icone = 'fa-level-up-alt';
                 
                 return `
                     <div class="activity-item">
@@ -2256,76 +5014,6 @@
                 `;
             }).join('');
         }
-
-        // Calendário
-        let currentDate = new Date();
-
-        function atualizarCalendario(tarefasFamilia) {
-            const monthNames = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-            document.getElementById('currentMonth').textContent = `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
-            
-            const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-            const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
-            
-            let days = [];
-            
-            for (let i = 0; i < firstDay.getDay(); i++) {
-                days.push(null);
-            }
-            
-            const hoje = new Date().toISOString().split('T')[0];
-            
-            for (let d = 1; d <= lastDay.getDate(); d++) {
-                const dataStr = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-                const temTarefa = tarefasFamilia.some(t => t.data === dataStr);
-                const isToday = dataStr === hoje;
-                
-                days.push({
-                    dia: d,
-                    data: dataStr,
-                    temTarefa: temTarefa,
-                    isToday: isToday
-                });
-            }
-            
-            const calendarDays = document.getElementById('calendarDays');
-            calendarDays.innerHTML = days.map(day => {
-                if (day === null) {
-                    return '<div class="calendar-day" style="opacity: 0.3;"></div>';
-                }
-                
-                let classes = 'calendar-day';
-                if (day.temTarefa) classes += ' has-task';
-                if (day.isToday) classes += ' today';
-                
-                return `<div class="${classes}" onclick="verDia('${day.data}')">${day.dia}</div>`;
-            }).join('');
-        }
-
-        window.navegarMes = function(direcao) {
-            currentDate.setMonth(currentDate.getMonth() + direcao);
-            const tarefasFamilia = tarefas.filter(t => t.familiaId === usuarioAtual.familiaId);
-            atualizarCalendario(tarefasFamilia);
-        };
-
-        window.verDia = function(data) {
-            const tarefasFamilia = tarefas.filter(t => t.familiaId === usuarioAtual.familiaId);
-            const tarefasDoDia = tarefasFamilia.filter(t => t.data === data);
-            const dataObj = new Date(data + 'T12:00:00');
-            const dataFormatada = dataObj.toLocaleDateString('pt-BR');
-            
-            if (tarefasDoDia.length === 0) {
-                mostrarAlerta('info', `Nenhuma tarefa para ${dataFormatada}`);
-            } else {
-                const msg = `Tarefas para ${dataFormatada}: ${tarefasDoDia.length} tarefa(s)`;
-                mostrarAlerta('info', msg);
-            }
-        };
-
-        // Navegação do dashboard
-        window.mostrarTelaDashboard = function(tela) {
-            mostrarAlerta('info', `Navegando para ${tela} (em desenvolvimento)`);
-        };
 
         // Alertas
         window.mostrarAlerta = function(tipo, mensagem) {
@@ -2348,10 +5036,23 @@
 
         // Fechar modal ao clicar fora
         window.onclick = function(event) {
-            const modal = document.getElementById('modalTarefa');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
+            const modais = [
+                'modalTarefa',
+                'modalConvidar',
+                'modalEditarMembro',
+                'modalFavoritar',
+                'modalUploadFoto',
+                'modalTransacao',
+                'modalLembrete',
+                'modalDocumento'
+            ];
+            
+            modais.forEach(modalId => {
+                const modal = document.getElementById(modalId);
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
         };
 
         // Iniciar aplicação
