@@ -1,740 +1,769 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Family Hub - Cadastro da Família</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>FamilyHub · Login & Cadastro</title>
     <style>
+        /* RESET E ESTILOS BASE */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
+            background-color: #0a0f1a;
             min-height: 100vh;
-            background: #000000;
-            color: white;
-            overflow-x: hidden;
             display: flex;
-            align-items: center;
             justify-content: center;
-            padding: 20px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Fundo animado */
-        .register-bg {
+        /* Canvas do Three.js (fundo de partículas) */
+        #particles-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Container principal */
+        #app {
+            width: 100%;
+            max-width: 480px;
+            margin: 20px;
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 32px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(79, 159, 255, 0.15);
             overflow: hidden;
         }
 
-        .particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(77, 77, 255, 0.3);
-            border-radius: 50%;
-            box-shadow: 0 0 15px #4d4dff;
-            animation: particleFloat 15s linear infinite;
-        }
-
-        .particle:nth-child(1) { top: 20%; left: 10%; animation-duration: 12s; }
-        .particle:nth-child(2) { top: 50%; left: 30%; animation-duration: 18s; background: rgba(138, 43, 226, 0.3); }
-        .particle:nth-child(3) { top: 80%; left: 70%; animation-duration: 15s; }
-        .particle:nth-child(4) { top: 30%; left: 80%; animation-duration: 20s; }
-        .particle:nth-child(5) { top: 70%; left: 20%; animation-duration: 14s; }
-        .particle:nth-child(6) { top: 40%; left: 60%; animation-duration: 16s; }
-        .particle:nth-child(7) { top: 90%; left: 40%; animation-duration: 22s; }
-        .particle:nth-child(8) { top: 10%; left: 90%; animation-duration: 13s; }
-        .particle:nth-child(9) { top: 60%; left: 50%; animation-duration: 19s; }
-        .particle:nth-child(10) { top: 85%; left: 15%; animation-duration: 17s; }
-
-        @keyframes particleFloat {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
-            50% { transform: translateY(-100px) rotate(180deg); opacity: 0.8; }
-            100% { transform: translateY(0) rotate(360deg); opacity: 0.3; }
-        }
-
-        .bg-gradient {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 30%, rgba(77, 77, 255, 0.15) 0%, transparent 40%),
-                        radial-gradient(circle at 80% 70%, rgba(138, 43, 226, 0.15) 0%, transparent 40%);
-            animation: gradientMove 15s ease infinite;
-        }
-
-        @keyframes gradientMove {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 0.8; }
-        }
-
-        .grid-3d {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(77, 77, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(138, 43, 226, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            transform: perspective(500px) rotateX(60deg) scale(2);
-            animation: gridMove 20s linear infinite;
-            opacity: 0.3;
-        }
-
-        @keyframes gridMove {
-            0% { transform: perspective(500px) rotateX(60deg) scale(2) translateY(0); }
-            100% { transform: perspective(500px) rotateX(60deg) scale(2) translateY(40px); }
-        }
-
-        .mouse-glow {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(77, 77, 255, 0.3) 0%, transparent 70%);
-            border-radius: 50%;
-            transform: translate(calc(var(--mouse-x, 0) - 300px), calc(var(--mouse-y, 0) - 300px));
-            transition: transform 0.1s ease;
-            pointer-events: none;
-            filter: blur(40px);
-            opacity: 0.5;
-        }
-
-        /* Container do formulário */
-        .register-container {
-            position: relative;
-            z-index: 10;
-            width: 100%;
-            max-width: 550px;
-            background: rgba(10, 10, 10, 0.9);
-            backdrop-filter: blur(20px);
-            border: 2px solid rgba(77, 77, 255, 0.3);
-            border-radius: 40px;
-            padding: 50px 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 50px rgba(77, 77, 255, 0.3);
-            animation: fadeInUp 0.8s ease;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Cabeçalho */
-        .register-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .register-header h1 {
-            font-size: 36px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #fff, #a0a0ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
-
-        .register-header p {
-            color: #aaa;
-            font-size: 16px;
-        }
-
-        .register-header span {
-            color: #4d4dff;
-            font-weight: 600;
-        }
-
-        /* Área de upload da foto */
-        .photo-upload-section {
+        /* TELA SPLASH */
+        #splash-screen {
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
-            margin-bottom: 30px;
+            min-height: 600px;
+            padding: 40px 20px;
+            background: transparent;
+            transition: opacity 0.8s ease;
         }
 
-        .photo-label {
-            color: #ccc;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+        .logo-container {
+            text-align: center;
+            animation: fadeIn 1.5s ease;
         }
 
-        .photo-label i {
-            color: #4d4dff;
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
-        .photo-preview {
-            width: 150px;
-            height: 150px;
-            background: rgba(20, 20, 20, 0.8);
-            border: 3px dashed #4d4dff;
-            border-radius: 30px;
+        .logo-image {
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(145deg, #1a2635, #0f172a);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin: 0 auto 20px;
+            border: 3px solid #4f9fff;
+            box-shadow: 0 10px 30px rgba(79, 159, 255, 0.3);
+        }
+
+        .logo-image svg {
+            width: 80px;
+            height: 80px;
+            fill: #4f9fff;
+        }
+
+        .logo-text {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 10px rgba(79, 159, 255, 0.3);
+        }
+
+        .splash-sub {
+            color: #a0b8d9;
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* TELA DE CADASTRO E LOGIN (estilos compartilhados) */
+        .screen {
+            display: none;
+            padding: 32px 28px 40px;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .screen.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .screen-title {
+            color: #ffffff;
+            font-size: 2rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+        }
+
+        .screen-sub {
+            text-align: center;
+            color: #a0b8d9;
+            margin-bottom: 32px;
+            font-size: 0.95rem;
+            border-bottom: 1px solid rgba(79, 159, 255, 0.2);
+            padding-bottom: 16px;
+        }
+
+        /* GRUPOS DE FORMULÁRIO */
+        .input-group {
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .input-group label {
+            display: block;
+            color: #cbd5e0;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+        }
+
+        .input-group input {
+            width: 100%;
+            background: rgba(20, 30, 45, 0.6);
+            border: 1.5px solid rgba(79, 159, 255, 0.3);
+            border-radius: 16px;
+            padding: 14px 18px;
+            color: #ffffff;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .input-group input:focus {
+            border-color: #4f9fff;
+            background: rgba(30, 40, 60, 0.8);
+            box-shadow: 0 0 0 4px rgba(79, 159, 255, 0.1);
+        }
+
+        .input-group input::placeholder {
+            color: #5f738c;
+            font-weight: 400;
+        }
+
+        /* UPLOAD DE FOTO - VERSÃO REDONDA */
+        .photo-upload-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .photo-preview-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(20, 30, 45, 0.8);
+            border: 3px dashed #4f9fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
             overflow: hidden;
             position: relative;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(77, 77, 255, 0.3);
+            transition: all 0.2s;
+            margin-bottom: 12px;
         }
 
-        .photo-preview:hover {
-            transform: scale(1.05);
-            border-color: #8a2be2;
-            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.4);
+        .photo-preview-circle:hover {
+            border-color: #7fb8ff;
+            background: rgba(30, 40, 60, 0.9);
+            transform: scale(1.02);
         }
 
-        .photo-preview img {
+        .photo-preview-circle.has-image {
+            border: 3px solid #4f9fff;
+        }
+
+        .photo-preview-circle .preview-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: none;
         }
 
-        .photo-preview .preview-placeholder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #888;
-            text-align: center;
-            padding: 20px;
+        .photo-preview-circle .placeholder-icon {
+            color: #4f9fff;
+            font-size: 2.2rem;
+            line-height: 1;
+            margin-bottom: 4px;
+            opacity: 0.7;
         }
 
-        .preview-placeholder span {
-            font-size: 40px;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 0 15px #4d4dff);
+        .photo-preview-circle .placeholder-text {
+            color: #8ba3c7;
+            font-size: 0.75rem;
+            font-weight: 500;
         }
 
-        .preview-placeholder p {
-            font-size: 12px;
-        }
-
-        .photo-preview.has-image .preview-placeholder {
+        .photo-preview-circle.has-image .placeholder-icon,
+        .photo-preview-circle.has-image .placeholder-text {
             display: none;
         }
 
-        .photo-preview.has-image img {
+        .photo-preview-circle.has-image .preview-img {
             display: block;
         }
 
-        .photo-upload-btn {
-            margin-top: 15px;
-            background: rgba(77, 77, 255, 0.15);
-            border: 1px solid #4d4dff;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .photo-upload-btn:hover {
-            background: #4d4dff;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(77, 77, 255, 0.5);
-        }
-
-        .photo-upload-btn i {
-            font-size: 18px;
-        }
-
-        #photoInput {
+        #foto-familia {
             display: none;
         }
 
-        /* Campos do formulário */
-        .input-group {
-            margin-bottom: 25px;
+        .file-name-small {
+            color: #8ba3c7;
+            font-size: 0.8rem;
+            margin-top: 4px;
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
-        .input-label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #ccc;
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 8px;
-            margin-left: 5px;
-        }
-
-        .input-label i {
-            color: #4d4dff;
-            font-size: 18px;
-        }
-
-        .input-field {
+        /* BOTÃO PRINCIPAL */
+        .btn-primary {
             width: 100%;
-            background: rgba(20, 20, 20, 0.8);
-            border: 2px solid #333;
-            border-radius: 20px;
-            padding: 16px 20px;
-            color: white;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            outline: none;
-        }
-
-        .input-field:focus {
-            border-color: #4d4dff;
-            box-shadow: 0 0 30px rgba(77, 77, 255, 0.3);
-        }
-
-        .input-field::placeholder {
-            color: #555;
-            font-size: 14px;
-        }
-
-        /* Linha de dois campos */
-        .row-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        /* Termos */
-        .terms-checkbox {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin: 30px 0 25px;
-            color: #aaa;
-            font-size: 14px;
-        }
-
-        .terms-checkbox input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            accent-color: #4d4dff;
-            cursor: pointer;
-        }
-
-        .terms-checkbox a {
-            color: #4d4dff;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .terms-checkbox a:hover {
-            text-decoration: underline;
-        }
-
-        /* Botão de cadastro */
-        .register-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #4d4dff, #8a2be2);
+            background: #4f9fff;
+            color: #ffffff;
             border: none;
-            border-radius: 30px;
-            padding: 18px;
-            color: white;
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 1px;
+            border-radius: 16px;
+            padding: 16px 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            box-shadow: 0 10px 30px rgba(77, 77, 255, 0.5);
-            margin-bottom: 25px;
+            transition: all 0.2s;
+            margin: 20px 0 16px;
+            box-shadow: 0 8px 20px rgba(79, 159, 255, 0.3);
         }
 
-        .register-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(77, 77, 255, 0.7);
+        .btn-primary:hover {
+            background: #6babff;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(79, 159, 255, 0.4);
         }
 
-        .register-btn:active {
+        .btn-primary:active {
             transform: translateY(0);
         }
 
-        /* Link para login */
-        .login-link {
+        /* LINK DE ALTERNÂNCIA ENTRE TELAS */
+        .toggle-link {
             text-align: center;
-            color: #aaa;
-            font-size: 15px;
+            color: #8ba3c7;
+            font-size: 0.9rem;
         }
 
-        .login-link a {
-            color: #4d4dff;
+        .toggle-link a {
+            color: #4f9fff;
             text-decoration: none;
             font-weight: 600;
             margin-left: 5px;
-            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
-        .login-link a:hover {
-            color: #8a2be2;
+        .toggle-link a:hover {
             text-decoration: underline;
         }
 
-        /* Mensagem de erro/sucesso */
-        .message-toast {
+        /* ALERTAS PERSONALIZADOS */
+        .custom-alert {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(20, 20, 20, 0.95);
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(20, 30, 45, 0.95);
             backdrop-filter: blur(10px);
-            border-left: 4px solid #4d4dff;
-            border-radius: 15px;
-            padding: 15px 25px;
+            border: 1px solid rgba(79, 159, 255, 0.3);
             color: white;
-            font-size: 14px;
-            display: flex;
+            padding: 14px 28px;
+            border-radius: 40px;
+            font-weight: 500;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+            display: none;
             align-items: center;
-            gap: 12px;
-            z-index: 1000;
-            animation: slideInRight 0.3s ease;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            gap: 10px;
+            max-width: 90%;
+            text-align: center;
+            letter-spacing: 0.3px;
         }
 
-        .message-toast.success {
-            border-left-color: #00ff88;
+        .custom-alert.error {
+            border-color: #ff6b6b;
+            background: rgba(50, 20, 20, 0.95);
         }
 
-        .message-toast.error {
-            border-left-color: #ff4444;
+        .custom-alert.success {
+            border-color: #51cf66;
+            background: rgba(20, 50, 30, 0.95);
         }
 
-        @keyframes slideInRight {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        /* Responsividade */
-        @media (max-width: 600px) {
-            .register-container {
-                padding: 40px 25px;
-            }
-
-            .row-2 {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-
-            .register-header h1 {
-                font-size: 28px;
-            }
-
-            .photo-preview {
-                width: 120px;
-                height: 120px;
-            }
-        }
-
+        /* RESPONSIVIDADE */
         @media (max-width: 400px) {
-            .register-container {
-                padding: 30px 20px;
-            }
+            #app { margin: 12px; }
+            .screen-title { font-size: 1.8rem; }
+            .photo-preview-circle { width: 100px; height: 100px; }
         }
     </style>
+    <!-- Three.js via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-    <!-- Fundo animado -->
-    <div class="register-bg">
-        <div class="particles">
-            <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-            <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-            <div class="particle"></div><div class="particle"></div><div class="particle"></div>
-            <div class="particle"></div>
+
+    <!-- Canvas para partículas Three.js -->
+    <canvas id="particles-canvas"></canvas>
+
+    <div id="app">
+        <!-- SPLASH SCREEN -->
+        <div id="splash-screen">
+            <div class="logo-container">
+                <div class="logo-image">
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" fill="none" stroke="#4f9fff" stroke-width="2.5"/>
+                        <path d="M30 45 L45 65 L70 35" stroke="#4f9fff" stroke-width="4" fill="none" stroke-linecap="round"/>
+                        <circle cx="50" cy="50" r="8" fill="#4f9fff"/>
+                    </svg>
+                </div>
+                <div class="logo-text">FamilyHub</div>
+                <div class="splash-sub">conexão que une</div>
+            </div>
         </div>
-        <div class="bg-gradient"></div>
-        <div class="grid-3d"></div>
-        <div class="mouse-glow" id="mouseGlow"></div>
+
+        <!-- TELA DE LOGIN (primeira após splash) -->
+        <div id="login-screen" class="screen">
+            <h1 class="screen-title">Bem-vindo de volta</h1>
+            <p class="screen-sub">Faça login na sua conta</p>
+
+            <form id="loginForm" onsubmit="event.preventDefault(); fazerLogin();">
+                <!-- USUÁRIO -->
+                <div class="input-group">
+                    <label>Usuário</label>
+                    <input type="text" id="login-usuario" placeholder="Digite seu usuário" maxlength="30" required>
+                </div>
+
+                <!-- SENHA -->
+                <div class="input-group">
+                    <label>Senha</label>
+                    <input type="password" id="login-senha" placeholder="Digite sua senha" maxlength="50" required>
+                </div>
+
+                <button type="submit" class="btn-primary">Entrar</button>
+
+                <div class="toggle-link">
+                    Não tem cadastro? <a onclick="mostrarTela('register')">Criar conta</a>
+                </div>
+            </form>
+        </div>
+
+        <!-- TELA DE CADASTRO -->
+        <div id="register-screen" class="screen">
+            <h1 class="screen-title">Criar conta</h1>
+            <p class="screen-sub">Cadastre sua família</p>
+
+            <form id="registerForm" onsubmit="event.preventDefault(); cadastrarFamilia();">
+                <!-- FOTO DA FAMÍLIA (REDONDA) -->
+                <div class="input-group">
+                    <label>Foto da família</label>
+                    <div class="photo-upload-container">
+                        <div class="photo-preview-circle" id="photoPreview" onclick="document.getElementById('foto-familia').click()">
+                            <div class="placeholder-icon">📸</div>
+                            <div class="placeholder-text">Adicionar foto</div>
+                            <img class="preview-img" id="previewImg" src="#" alt="preview">
+                        </div>
+                        <input type="file" id="foto-familia" accept="image/*" onchange="handleFotoUpload(event)">
+                        <span class="file-name-small" id="fileNameDisplay">Nenhum arquivo</span>
+                    </div>
+                </div>
+
+                <!-- NOME DA FAMÍLIA -->
+                <div class="input-group">
+                    <label>Nome da família</label>
+                    <input type="text" id="nome-familia" placeholder="Ex: Silva, Souza, Oliveira..." maxlength="50" required>
+                </div>
+
+                <!-- USUÁRIO -->
+                <div class="input-group">
+                    <label>Usuário</label>
+                    <input type="text" id="usuario" placeholder="Escolha um nome de usuário" maxlength="30" required>
+                </div>
+
+                <!-- SENHA -->
+                <div class="input-group">
+                    <label>Senha</label>
+                    <input type="password" id="senha" placeholder="Mínimo 6 caracteres" maxlength="50" required>
+                </div>
+
+                <!-- REPETIR SENHA -->
+                <div class="input-group">
+                    <label>Repetir senha</label>
+                    <input type="password" id="rep-senha" placeholder="Digite a senha novamente" maxlength="50" required>
+                </div>
+
+                <button type="submit" class="btn-primary">Cadastrar</button>
+
+                <div class="toggle-link">
+                    Já tem cadastro? <a onclick="mostrarTela('login')">Fazer login</a>
+                </div>
+            </form>
+        </div>
     </div>
 
-    <!-- Container do formulário de cadastro -->
-    <div class="register-container">
-        <div class="register-header">
-            <h1>Criar Família</h1>
-            <p>Comece sua jornada no <span>Family Hub</span></p>
-        </div>
-
-        <!-- Área de upload da foto da família -->
-        <div class="photo-upload-section">
-            <div class="photo-label">
-                <i>📸</i> FOTO DA FAMÍLIA
-            </div>
-            <div class="photo-preview" id="photoPreview" onclick="document.getElementById('photoInput').click()">
-                <div class="preview-placeholder">
-                    <span>🏠</span>
-                    <p>Clique para adicionar<br>uma foto da família</p>
-                </div>
-                <img id="previewImage" src="#" alt="Prévia da família">
-            </div>
-            <button type="button" class="photo-upload-btn" onclick="document.getElementById('photoInput').click()">
-                <i>📱</i> Escolher do dispositivo
-            </button>
-            <input type="file" id="photoInput" accept="image/*" onchange="previewFamilyPhoto(event)">
-        </div>
-
-        <!-- Formulário -->
-        <form id="registerForm" onsubmit="handleRegister(event)">
-            <!-- Nome da Família -->
-            <div class="input-group">
-                <div class="input-label">
-                    <i>🏷️</i> NOME DA FAMÍLIA
-                </div>
-                <input type="text" class="input-field" id="familyName" placeholder="Ex: Silva Oliveira" required>
-            </div>
-
-            <!-- Nome de Usuário -->
-            <div class="input-group">
-                <div class="input-label">
-                    <i>👤</i> NOME DE USUÁRIO
-                </div>
-                <input type="text" class="input-field" id="username" placeholder="Escolha um nome de usuário" required>
-            </div>
-
-            <!-- Senha e Confirmar Senha (lado a lado) -->
-            <div class="row-2">
-                <div class="input-group">
-                    <div class="input-label">
-                        <i>🔒</i> SENHA
-                    </div>
-                    <input type="password" class="input-field" id="password" placeholder="••••••••" required>
-                </div>
-                <div class="input-group">
-                    <div class="input-label">
-                        <i>✓</i> CONFIRMAR SENHA
-                    </div>
-                    <input type="password" class="input-field" id="confirmPassword" placeholder="••••••••" required>
-                </div>
-            </div>
-
-            <!-- Termos de uso -->
-            <div class="terms-checkbox">
-                <input type="checkbox" id="terms" required>
-                <label for="terms">Eu aceito os <a href="#" onclick="showMessage('Termos de uso ainda em desenvolvimento', 'info'); return false;">Termos de Uso</a> e a <a href="#" onclick="showMessage('Política de privacidade ainda em desenvolvimento', 'info'); return false;">Política de Privacidade</a></label>
-            </div>
-
-            <!-- Botão de cadastro -->
-            <button type="submit" class="register-btn">
-                <i>✨</i> CRIAR MINHA FAMÍLIA
-            </button>
-
-            <!-- Link para login -->
-            <div class="login-link">
-                Já tem uma família?
-                <a href="#" onclick="showMessage('Redirecionando para login...', 'info'); return false;">Fazer login</a>
-            </div>
-        </form>
+    <!-- ALERTA CUSTOMIZADO -->
+    <div id="customAlert" class="custom-alert">
+        <span id="alertIcon">🔔</span>
+        <span id="alertMessage">Mensagem</span>
     </div>
-
-    <!-- Container para mensagens toast -->
-    <div id="messageContainer"></div>
 
     <script>
-        // Efeito do mouse (mesmo do original)
-        document.addEventListener('mousemove', function(e) {
-            const mouseGlow = document.getElementById('mouseGlow');
-            if (mouseGlow) {
-                mouseGlow.style.setProperty('--mouse-x', e.clientX + 'px');
-                mouseGlow.style.setProperty('--mouse-y', e.clientY + 'px');
-                mouseGlow.style.transform = `translate(calc(var(--mouse-x) - 300px), calc(var(--mouse-y) - 300px))`;
-            }
-        });
-
-        // ========== FUNÇÃO DE UPLOAD DE FOTO ==========
-        function previewFamilyPhoto(event) {
-            const input = event.target;
-            const preview = document.getElementById('photoPreview');
-            const img = document.getElementById('previewImage');
+        // ==================== THREE.JS - PARTÍCULAS COM CURSOR ====================
+        (function initParticles() {
+            const canvas = document.getElementById('particles-canvas');
             
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x0a0f1a);
+            
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 30;
+            
+            const renderer = new THREE.WebGLRenderer({ canvas, alpha: false, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particlesCount = 800;
+            
+            const posArray = new Float32Array(particlesCount * 3);
+            const colorArray = new Float32Array(particlesCount * 3);
+            
+            const colors = [
+                [0.4, 0.6, 1.0],
+                [0.5, 0.7, 1.0],
+                [0.6, 0.8, 1.0],
+                [0.3, 0.5, 0.9],
+                [0.7, 0.8, 1.0]
+            ];
+            
+            for(let i = 0; i < particlesCount; i++) {
+                posArray[i*3] = (Math.random() - 0.5) * 80;
+                posArray[i*3+1] = (Math.random() - 0.5) * 80;
+                posArray[i*3+2] = (Math.random() - 0.5) * 50;
                 
-                reader.onload = function(e) {
-                    img.src = e.target.result;
-                    preview.classList.add('has-image');
-                    showMessage('📸 Foto da família selecionada!', 'success');
-                }
-                
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        // ========== FUNÇÃO DE CADASTRO ==========
-        function handleRegister(event) {
-            event.preventDefault(); // Evita o envio do formulário
-            
-            // Pega os valores dos campos
-            const familyName = document.getElementById('familyName').value.trim();
-            const username = document.getElementById('username').value.trim();
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            const termsChecked = document.getElementById('terms').checked;
-            
-            // Validações
-            if (!familyName) {
-                showMessage('Por favor, digite o nome da família', 'error');
-                return;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                colorArray[i*3] = color[0];
+                colorArray[i*3+1] = color[1];
+                colorArray[i*3+2] = color[2];
             }
             
-            if (!username) {
-                showMessage('Por favor, escolha um nome de usuário', 'error');
-                return;
-            }
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
             
-            if (username.length < 3) {
-                showMessage('Nome de usuário deve ter pelo menos 3 caracteres', 'error');
-                return;
-            }
-            
-            if (!password) {
-                showMessage('Por favor, digite uma senha', 'error');
-                return;
-            }
-            
-            if (password.length < 6) {
-                showMessage('A senha deve ter pelo menos 6 caracteres', 'error');
-                return;
-            }
-            
-            if (password !== confirmPassword) {
-                showMessage('As senhas não conferem!', 'error');
-                return;
-            }
-            
-            if (!termsChecked) {
-                showMessage('Você precisa aceitar os termos de uso', 'error');
-                return;
-            }
-            
-            // Verifica se uma foto foi selecionada
-            const photoPreview = document.getElementById('photoPreview');
-            if (!photoPreview.classList.contains('has-image')) {
-                showMessage('Por favor, adicione uma foto da família', 'error');
-                return;
-            }
-            
-            // Se chegou até aqui, tudo está válido
-            showMessage('✅ Família cadastrada com sucesso! Redirecionando...', 'success');
-            
-            // Aqui você pode adicionar o código para enviar os dados para o servidor
-            console.log('Dados do cadastro:', {
-                familyName: familyName,
-                username: username,
-                password: password,
-                photo: document.getElementById('previewImage').src
+            const particlesMaterial = new THREE.PointsMaterial({
+                size: 0.3,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.7,
+                blending: THREE.AdditiveBlending,
+                sizeAttenuation: true
             });
             
-            // Simula um redirecionamento após 2 segundos
-            setTimeout(() => {
-                showMessage('🎉 Bem-vindo ao Family Hub!', 'success');
-                // window.location.href = "dashboard.html"; // Descomente para redirecionar
-            }, 2000);
-        }
-
-        // ========== FUNÇÃO PARA MOSTRAR MENSAGENS ==========
-        function showMessage(message, type = 'info') {
-            const container = document.getElementById('messageContainer');
-            if (!container) return;
+            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particlesMesh);
             
-            const messageId = 'msg_' + Date.now();
+            const mouse = { x: 0, y: 0 };
+            let targetRotationX = 0;
+            let targetRotationY = 0;
             
-            const toast = document.createElement('div');
-            toast.className = `message-toast ${type}`;
-            toast.id = messageId;
+            document.addEventListener('mousemove', (event) => {
+                mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+                mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+                
+                targetRotationY = mouse.x * 0.3;
+                targetRotationX = mouse.y * 0.2;
+            });
             
-            let icon = 'ℹ️';
-            if (type === 'success') icon = '✅';
-            else if (type === 'error') icon = '❌';
-            else if (type === 'info') icon = '📌';
-            
-            toast.innerHTML = `<span>${icon}</span><span>${message}</span>`;
-            
-            container.appendChild(toast);
-
-            // Remove a mensagem após 3 segundos
-            setTimeout(() => {
-                const toastElement = document.getElementById(messageId);
-                if (toastElement) {
-                    toastElement.style.animation = 'slideInRight 0.3s reverse';
-                    setTimeout(() => toastElement.remove(), 300);
+            let time = 0;
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                time += 0.001;
+                
+                const positions = particlesGeometry.attributes.position.array;
+                for(let i = 0; i < positions.length; i+=3) {
+                    positions[i+1] += Math.sin(time + positions[i]) * 0.002;
                 }
-            }, 3000);
+                particlesGeometry.attributes.position.needsUpdate = true;
+                
+                particlesMesh.rotation.y += (targetRotationY - particlesMesh.rotation.y) * 0.05;
+                particlesMesh.rotation.x += (targetRotationX - particlesMesh.rotation.x) * 0.05;
+                
+                renderer.render(scene, camera);
+            }
+            
+            animate();
+            
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        })();
+
+        // ==================== FUNÇÕES DE INTERFACE ====================
+        
+        // Splash screen - agora direto para LOGIN
+        setTimeout(function() {
+            const splash = document.getElementById('splash-screen');
+            const login = document.getElementById('login-screen');
+            
+            splash.style.opacity = '0';
+            
+            setTimeout(() => {
+                splash.style.display = 'none';
+                login.classList.add('active');
+            }, 600);
+        }, 3000);
+
+        // Alternar entre telas de cadastro e login
+        window.mostrarTela = function(tela) {
+            document.getElementById('register-screen').classList.remove('active');
+            document.getElementById('login-screen').classList.remove('active');
+            
+            if (tela === 'register') {
+                document.getElementById('register-screen').classList.add('active');
+            } else {
+                document.getElementById('login-screen').classList.add('active');
+            }
+        };
+
+        // Upload de foto redonda
+        window.handleFotoUpload = function(event) {
+            const file = event.target.files[0];
+            const previewCircle = document.getElementById('photoPreview');
+            const previewImg = document.getElementById('previewImg');
+            const fileNameDisplay = document.getElementById('fileNameDisplay');
+            
+            if (file) {
+                if (file.size > 5 * 1024 * 1024) {
+                    mostrarAlerta('erro', 'A imagem deve ter no máximo 5MB');
+                    return;
+                }
+                
+                fileNameDisplay.textContent = file.name.length > 30 ? file.name.substr(0, 27) + '...' : file.name;
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImg.src = e.target.result;
+                    previewCircle.classList.add('has-image');
+                };
+                reader.readAsDataURL(file);
+            } else {
+                previewCircle.classList.remove('has-image');
+                previewImg.src = '#';
+                fileNameDisplay.textContent = 'Nenhum arquivo';
+            }
+        };
+
+        // Alertas
+        window.mostrarAlerta = function(tipo, mensagem) {
+            const alertBox = document.getElementById('customAlert');
+            const alertIcon = document.getElementById('alertIcon');
+            const alertMsg = document.getElementById('alertMessage');
+            
+            alertIcon.innerHTML = tipo === 'erro' ? '❌' : tipo === 'sucesso' ? '✅' : 'ℹ️';
+            alertBox.classList.remove('error', 'success');
+            if (tipo === 'erro') alertBox.classList.add('error');
+            if (tipo === 'sucesso') alertBox.classList.add('success');
+            
+            alertMsg.textContent = mensagem;
+            alertBox.style.display = 'flex';
+            
+            setTimeout(() => {
+                alertBox.style.display = 'none';
+            }, 3500);
+        };
+
+        // ==================== FUNÇÕES DE LOGIN ====================
+        
+        window.fazerLogin = function() {
+            const usuario = document.getElementById('login-usuario').value.trim();
+            const senha = document.getElementById('login-senha').value;
+            
+            if (usuario === '' || senha === '') {
+                mostrarAlerta('erro', 'Preencha usuário e senha');
+                return;
+            }
+            
+            // Recuperar dados do localStorage
+            const dadosSalvos = localStorage.getItem('familiaCadastrada');
+            
+            if (!dadosSalvos) {
+                mostrarAlerta('erro', 'Nenhum cadastro encontrado. Crie uma conta primeiro.');
+                return;
+            }
+            
+            const familia = JSON.parse(dadosSalvos);
+            
+            if (familia.usuario === usuario && familia.senha === senha) {
+                mostrarAlerta('sucesso', `Bem-vindo, família ${familia.nome}!`);
+                
+                // Aqui você pode redirecionar para a área logada
+                // Por enquanto só mostramos a mensagem
+            } else {
+                mostrarAlerta('erro', 'Usuário ou senha incorretos');
+            }
+        };
+
+        // ==================== FUNÇÕES DE CADASTRO ====================
+        
+        window.cadastrarFamilia = function() {
+            const fotoInput = document.getElementById('foto-familia');
+            const nomeFamilia = document.getElementById('nome-familia').value.trim();
+            const usuario = document.getElementById('usuario').value.trim();
+            const senha = document.getElementById('senha').value;
+            const repSenha = document.getElementById('rep-senha').value;
+            
+            // Validações
+            if (nomeFamilia === '') {
+                mostrarAlerta('erro', 'Nome da família é obrigatório');
+                document.getElementById('nome-familia').focus();
+                return;
+            }
+            
+            if (usuario === '') {
+                mostrarAlerta('erro', 'Usuário é obrigatório');
+                document.getElementById('usuario').focus();
+                return;
+            }
+            
+            if (usuario.length < 3) {
+                mostrarAlerta('erro', 'Usuário deve ter no mínimo 3 caracteres');
+                return;
+            }
+            
+            if (senha === '') {
+                mostrarAlerta('erro', 'Senha é obrigatória');
+                document.getElementById('senha').focus();
+                return;
+            }
+            
+            if (senha.length < 6) {
+                mostrarAlerta('erro', 'Senha deve ter pelo menos 6 caracteres');
+                return;
+            }
+            
+            if (repSenha === '') {
+                mostrarAlerta('erro', 'Confirme sua senha');
+                document.getElementById('rep-senha').focus();
+                return;
+            }
+            
+            if (senha !== repSenha) {
+                mostrarAlerta('erro', 'As senhas não coincidem');
+                document.getElementById('rep-senha').focus();
+                return;
+            }
+            
+            // Processar foto (se houver)
+            if (fotoInput.files.length > 0) {
+                const file = fotoInput.files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    salvarDados(nomeFamilia, usuario, senha, e.target.result);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                salvarDados(nomeFamilia, usuario, senha, null);
+            }
+        };
+
+        function salvarDados(nomeFamilia, usuario, senha, fotoBase64) {
+            const dadosFamilia = {
+                nome: nomeFamilia,
+                usuario: usuario,
+                senha: senha,
+                foto: fotoBase64,
+                dataCadastro: new Date().toISOString()
+            };
+
+            localStorage.setItem('familiaCadastrada', JSON.stringify(dadosFamilia));
+            
+            mostrarAlerta('sucesso', 'Família cadastrada com sucesso!');
+            
+            // Limpar formulário de cadastro
+            document.getElementById('registerForm').reset();
+            document.getElementById('photoPreview').classList.remove('has-image');
+            document.getElementById('previewImg').src = '#';
+            document.getElementById('fileNameDisplay').textContent = 'Nenhum arquivo';
+            
+            // Voltar para tela de login após 1.5 segundos
+            setTimeout(() => {
+                mostrarTela('login');
+                // Limpar campos de login também (opcional)
+                document.getElementById('login-usuario').value = '';
+                document.getElementById('login-senha').value = '';
+            }, 1500);
         }
 
-        // ========== VALIDAÇÕES EM TEMPO REAL (opcional) ==========
-        document.getElementById('confirmPassword').addEventListener('input', function() {
-            const password = document.getElementById('password').value;
-            const confirm = this.value;
-            
-            if (confirm.length > 0) {
-                if (password === confirm) {
-                    this.style.borderColor = '#00ff88';
+        // Validação em tempo real de senha no cadastro
+        document.getElementById('senha')?.addEventListener('input', function() {
+            const rep = document.getElementById('rep-senha').value;
+            if (rep.length > 0) {
+                if (this.value !== rep) {
+                    document.getElementById('rep-senha').style.borderColor = '#ff6b6b';
                 } else {
-                    this.style.borderColor = '#ff4444';
+                    document.getElementById('rep-senha').style.borderColor = '#51cf66';
+                }
+            }
+        });
+
+        document.getElementById('rep-senha')?.addEventListener('input', function() {
+            const senha = document.getElementById('senha').value;
+            if (this.value.length > 0) {
+                if (senha !== this.value) {
+                    this.style.borderColor = '#ff6b6b';
+                } else {
+                    this.style.borderColor = '#51cf66';
                 }
             } else {
-                this.style.borderColor = '#333';
+                this.style.borderColor = 'rgba(79, 159, 255, 0.3)';
             }
-        });
-
-        document.getElementById('password').addEventListener('input', function() {
-            const confirm = document.getElementById('confirmPassword').value;
-            
-            if (confirm.length > 0) {
-                if (this.value === confirm) {
-                    document.getElementById('confirmPassword').style.borderColor = '#00ff88';
-                } else {
-                    document.getElementById('confirmPassword').style.borderColor = '#ff4444';
-                }
-            }
-        });
-
-        // Fecha mensagens com ESC
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                const container = document.getElementById('messageContainer');
-                if (container) container.innerHTML = '';
-            }
-        });
-
-        // Inicialização
-        document.addEventListener('DOMContentLoaded', function() {
-            showMessage('👋 Preencha os dados para criar sua família', 'info');
         });
     </script>
 </body>
