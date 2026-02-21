@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>FamilyHub · Sistema Familiar</title>
+    <title>FamilyHub · Sistema Familiar Completo</title>
     <style>
         /* ===== ESTILOS GLOBAIS ===== */
         * {
@@ -1952,6 +1952,374 @@
             font-size: 0.75rem;
         }
 
+        /* ===== CONFIGURAÇÕES ===== */
+        .config-container {
+            background: rgba(20, 30, 45, 0.5);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(79, 159, 255, 0.15);
+            border-radius: 24px;
+            padding: 30px;
+        }
+        
+        .config-header {
+            margin-bottom: 30px;
+        }
+        
+        .config-header h2 {
+            color: #ffffff;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .config-header p {
+            color: #8ba3c7;
+        }
+        
+        .config-menu {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(79, 159, 255, 0.2);
+            padding-bottom: 20px;
+        }
+        
+        .config-menu-item {
+            background: rgba(30, 40, 55, 0.6);
+            border: 1px solid rgba(79, 159, 255, 0.2);
+            border-radius: 30px;
+            padding: 10px 20px;
+            color: #8ba3c7;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .config-menu-item:hover {
+            background: rgba(79, 159, 255, 0.1);
+            border-color: #4f9fff;
+            color: #ffffff;
+        }
+        
+        .config-menu-item.active {
+            background: #4f9fff;
+            border-color: #4f9fff;
+            color: white;
+        }
+        
+        .config-content {
+            min-height: 500px;
+        }
+        
+        .config-pane {
+            display: none;
+        }
+        
+        .config-pane.active {
+            display: block;
+        }
+        
+        .config-pane h3 {
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .config-card {
+            background: rgba(30, 40, 55, 0.4);
+            border: 1px solid rgba(79, 159, 255, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .config-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .config-card-header i {
+            color: #4f9fff;
+            font-size: 1.3rem;
+        }
+        
+        .config-card-header h4 {
+            color: #ffffff;
+            font-size: 1.1rem;
+        }
+        
+        .config-card-body {
+            padding-left: 35px;
+        }
+        
+        .config-field {
+            margin-bottom: 15px;
+        }
+        
+        .config-field label {
+            display: block;
+            color: #8ba3c7;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .config-field-row {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .config-field input, .config-select {
+            flex: 1;
+            background: rgba(20, 30, 45, 0.8);
+            border: 1.5px solid rgba(79, 159, 255, 0.3);
+            border-radius: 12px;
+            padding: 12px 15px;
+            color: #ffffff;
+            font-size: 0.95rem;
+        }
+        
+        .config-field input:focus, .config-select:focus {
+            border-color: #4f9fff;
+            outline: none;
+        }
+        
+        .config-field-value {
+            background: rgba(20, 30, 45, 0.6);
+            border-radius: 12px;
+            padding: 12px 15px;
+            color: #ffffff;
+        }
+        
+        .config-btn {
+            background: rgba(30, 40, 55, 0.8);
+            border: 1.5px solid rgba(79, 159, 255, 0.3);
+            border-radius: 12px;
+            padding: 10px 18px;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .config-btn:hover {
+            border-color: #4f9fff;
+            background: rgba(79, 159, 255, 0.1);
+        }
+        
+        .config-btn-primary {
+            background: #4f9fff;
+            border-color: #4f9fff;
+        }
+        
+        .config-btn-primary:hover {
+            background: #6babff;
+        }
+        
+        .config-btn-danger {
+            border-color: #ff6b6b;
+            color: #ff6b6b;
+        }
+        
+        .config-btn-danger:hover {
+            background: rgba(255, 107, 107, 0.1);
+        }
+        
+        .config-btn-warning {
+            border-color: #ffc107;
+            color: #ffc107;
+        }
+        
+        .config-btn-small {
+            padding: 6px 12px;
+            font-size: 0.8rem;
+        }
+        
+        .config-toggle {
+            margin-bottom: 12px;
+        }
+        
+        .config-toggle label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ffffff;
+            cursor: pointer;
+        }
+        
+        .config-toggle input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #4f9fff;
+        }
+        
+        .family-photo-edit {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .current-family-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #1a2635, #0f172a);
+            border: 3px solid #4f9fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .current-family-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .current-family-photo .photo-placeholder {
+            font-size: 3rem;
+            color: #4f9fff;
+        }
+        
+        .photo-edit-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        
+        .stat-box {
+            background: rgba(20, 30, 45, 0.6);
+            border-radius: 16px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .stat-box-value {
+            color: #4f9fff;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .stat-box-label {
+            color: #8ba3c7;
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+        
+        .invite-link-box {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .invite-link-box input {
+            flex: 1;
+            background: rgba(20, 30, 45, 0.8);
+            border: 1.5px solid rgba(79, 159, 255, 0.3);
+            border-radius: 12px;
+            padding: 12px 15px;
+            color: #8ba3c7;
+        }
+        
+        .cargos-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .cargo-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            background: rgba(20, 30, 45, 0.6);
+            border-radius: 12px;
+        }
+        
+        .sessao-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            background: rgba(20, 30, 45, 0.6);
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+        
+        .tema-opcoes {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 15px;
+        }
+        
+        .tema-opcao {
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .tema-preview {
+            width: 100%;
+            height: 80px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        
+        .tema-opcao:hover .tema-preview {
+            border-color: #4f9fff;
+        }
+        
+        .tema-escuro {
+            background: linear-gradient(145deg, #0a0f1a, #1a2635);
+        }
+        
+        .tema-claro {
+            background: linear-gradient(145deg, #f0f4fa, #d0d8e8);
+        }
+        
+        .tema-azul {
+            background: linear-gradient(145deg, #1e3a5f, #2b4c7c);
+        }
+        
+        .tema-roxo {
+            background: linear-gradient(145deg, #2d1b3a, #452b5c);
+        }
+        
+        .auditoria-filtros {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .auditoria-lista {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .photo-preview-circle.large {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+        }
+        
+        .photo-preview-circle.large .placeholder-icon {
+            font-size: 3rem;
+        }
+
         /* MODAL */
         .modal-overlay {
             position: fixed;
@@ -2141,6 +2509,19 @@
             
             .documentos-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .family-photo-edit {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .config-field-row {
+                flex-direction: column;
+            }
+            
+            .auditoria-filtros {
+                flex-direction: column;
             }
         }
     </style>
@@ -2554,7 +2935,7 @@
                     </div>
                 </div>
 
-                <!-- ÁREA DE TAREFAS COMPLETA (MELHORADA) -->
+                <!-- ÁREA DE TAREFAS COMPLETA -->
                 <div id="tarefasSection" style="display: none;">
                     <div class="tasks-container">
                         <div class="section-header">
@@ -2712,11 +3093,534 @@
                     </div>
                 </div>
 
-                <!-- ÁREA DE CONFIGURAÇÕES -->
+                <!-- ÁREA DE CONFIGURAÇÕES (COMPLETA) -->
                 <div id="configSection" style="display: none;">
-                    <div class="members-container">
-                        <h2 style="color: #ffffff; margin-bottom: 20px;">Configurações</h2>
-                        <p style="color: #8ba3c7;">Em desenvolvimento...</p>
+                    <div class="config-container">
+                        <!-- CABEÇALHO DAS CONFIGURAÇÕES -->
+                        <div class="config-header">
+                            <h2>⚙️ Configurações da Família</h2>
+                            <p>Gerencie todas as configurações da sua família</p>
+                        </div>
+                        
+                        <!-- MENU DE CONFIGURAÇÕES -->
+                        <div class="config-menu">
+                            <button class="config-menu-item active" onclick="mostrarSubConfig('geral')">
+                                <i class="fas fa-home"></i> Geral
+                            </button>
+                            <button class="config-menu-item" onclick="mostrarSubConfig('membros')">
+                                <i class="fas fa-users"></i> Membros
+                            </button>
+                            <button class="config-menu-item" onclick="mostrarSubConfig('seguranca')">
+                                <i class="fas fa-shield-alt"></i> Segurança
+                            </button>
+                            <button class="config-menu-item" onclick="mostrarSubConfig('notificacoes')">
+                                <i class="fas fa-bell"></i> Notificações
+                            </button>
+                            <button class="config-menu-item" onclick="mostrarSubConfig('privacidade')">
+                                <i class="fas fa-lock"></i> Privacidade
+                            </button>
+                            <button class="config-menu-item" onclick="mostrarSubConfig('backup')">
+                                <i class="fas fa-database"></i> Backup
+                            </button>
+                            <button class="config-menu-item" onclick="mostrarSubConfig('personalizacao')">
+                                <i class="fas fa-palette"></i> Aparência
+                            </button>
+                            <button class="config-menu-item" onclick="mostrarSubConfig('auditoria')">
+                                <i class="fas fa-history"></i> Auditoria
+                            </button>
+                        </div>
+                        
+                        <!-- CONTEÚDO DAS CONFIGURAÇÕES -->
+                        <div class="config-content">
+                            <!-- CONFIGURAÇÕES GERAIS -->
+                            <div id="configGeral" class="config-pane active">
+                                <h3>Informações da Família</h3>
+                                
+                                <div class="config-card">
+                                    <div class="config-card-header">
+                                        <i class="fas fa-camera"></i>
+                                        <h4>Foto da Família</h4>
+                                    </div>
+                                    <div class="config-card-body">
+                                        <div class="family-photo-edit">
+                                            <div class="current-family-photo" id="currentFamilyPhoto">
+                                                <img src="" alt="Foto da família" id="familyPhotoImg" style="display: none;">
+                                                <span class="photo-placeholder">👪</span>
+                                            </div>
+                                            <div class="photo-edit-actions">
+                                                <button class="config-btn" onclick="abrirModalEditarFotoFamilia()">
+                                                    <i class="fas fa-edit"></i> Alterar foto
+                                                </button>
+                                                <button class="config-btn config-btn-danger" onclick="removerFotoFamilia()">
+                                                    <i class="fas fa-trash"></i> Remover
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="config-card">
+                                    <div class="config-card-header">
+                                        <i class="fas fa-info-circle"></i>
+                                        <h4>Dados da Família</h4>
+                                    </div>
+                                    <div class="config-card-body">
+                                        <div class="config-field">
+                                            <label>Nome da Família</label>
+                                            <div class="config-field-row">
+                                                <input type="text" id="configFamiliaNome" value="" placeholder="Nome da família">
+                                                <button class="config-btn config-btn-primary" onclick="salvarNomeFamilia()">
+                                                    <i class="fas fa-save"></i> Salvar
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="config-field">
+                                            <label>Data de Criação</label>
+                                            <div class="config-field-value" id="configDataCriacao">Carregando...</div>
+                                        </div>
+                                        
+                                        <div class="config-field">
+                                            <label>Total de Membros</label>
+                                            <div class="config-field-value" id="configTotalMembros">0</div>
+                                        </div>
+                                        
+                                        <div class="config-field">
+                                            <label>Administrador</label>
+                                            <div class="config-field-value" id="configAdmin">Carregando...</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="config-card">
+                                    <div class="config-card-header">
+                                        <i class="fas fa-chart-line"></i>
+                                        <h4>Estatísticas</h4>
+                                    </div>
+                                    <div class="config-card-body">
+                                        <div class="stats-grid">
+                                            <div class="stat-box">
+                                                <div class="stat-box-value" id="configTotalTarefas">0</div>
+                                                <div class="stat-box-label">Tarefas</div>
+                                            </div>
+                                            <div class="stat-box">
+                                                <div class="stat-box-value" id="configTotalFotos">0</div>
+                                                <div class="stat-box-label">Fotos</div>
+                                            </div>
+                                            <div class="stat-box">
+                                                <div class="stat-box-value" id="configTotalDocumentos">0</div>
+                                                <div class="stat-box-label">Documentos</div>
+                                            </div>
+                                            <div class="stat-box">
+                                                <div class="stat-box-value" id="configTotalMensagens">0</div>
+                                                <div class="stat-box-label">Mensagens</div>
+                                            </div>
+                                            <div class="stat-box">
+                                                <div class="stat-box-value" id="configTotalPontos">0</div>
+                                                <div class="stat-box-label">Pontos totais</div>
+                                            </div>
+                                            <div class="stat-box">
+                                                <div class="stat-box-value" id="configTotalTransacoes">0</div>
+                                                <div class="stat-box-label">Transações</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- CONFIGURAÇÕES DE MEMBROS -->
+                            <div id="configMembros" class="config-pane">
+                                <h3>Gerenciar Membros</h3>
+                                
+                                <div class="config-card">
+                                    <div class="config-card-header">
+                                        <i class="fas fa-user-plus"></i>
+                                        <h4>Convidar Novo Membro</h4>
+                                    </div>
+                                    <div class="config-card-body">
+                                        <p style="color: #8ba3c7; margin-bottom: 15px;">Compartilhe o link de convite com novos membros</p>
+                                        <div class="invite-link-box">
+                                            <input type="text" id="inviteLink" readonly value="https://familyhub.app/convite/123">
+                                            <button class="config-btn" onclick="copiarLinkConvite()">
+                                                <i class="fas fa-copy"></i> Copiar
+                                            </button>
+                                        </div>
+                                        <p style="color: #8ba3c7; font-size: 0.85rem; margin-top: 10px;">
+                                            Ou compartilhe a senha da família: <strong id="configFamiliaSenha">******</strong>
+                                            <button class="config-btn config-btn-small" onclick="toggleMostrarSenha()">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div class="config-card">
+                                    <div class="config-card-header">
+                                        <i class="fas fa-user-cog"></i>
+                                        <h4>Gerenciar Cargos</h4>
+                                    </div>
+                                    <div class="config-card-body">
+                                        <p style="color: #8ba3c7; margin-bottom: 15px;">Atribua cargos personalizados aos membros</p>
+                                        <div class="cargos-list" id="cargosList">
+                                            <!-- Lista de membros com cargos será inserida aqui -->
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="config-card">
+                                    <div class="config-card-header">
+                                        <i class="fas fa-user-minus"></i>
+                                        <h4>Remover Membros</h4>
+                                    </div>
+                                    <div class="config-card-body">
+                                        <p style="color: #ff6b6b; margin-bottom: 15px;">Cuidado! Esta ação não pode ser desfeita.</p>
+                                        <select id="removerMembroSelect" class="config-select">
+                                            <option value="">Selecione um membro</option>
+                                        </select>
+                                        <button class="config-btn config-btn-danger" onclick="confirmarRemoverMembro()">
+                                            <i class="fas fa-user-slash"></i> Remover Membro
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- CONFIGURAÇÕES DE SEGURANÇA -->
+                            <div id="configSeguranca" class="config-pane">
+                                <h3>Segurança</h3>
+                                
+                                <div class="config-card">
+                                    <div class="config-card-header">
+                                        <i class="fas fa-key"></i>
+                                        <h4>Senha da Família</h4>
+                                    </div>
+                                    <div class="config-card-body">
+                                        <div class="config-field">
+                                            <label>Senha atual da família</label>
+                                            <input type="password" id="senhaFamiliaAtual" value="" disabled>
+                                        </div>
+                                        <div class="config-field">
+                                            <label>Nova senha da família</label>
+                                            <input type="password" id="novaSenhaFamilia" placeholder="Digite a nova senha">
+                                        </div>
+                                        <div class="config-field">
+                                            <label>Confirmar nova senha</label>
+                                            <input type="password" id="confirmarNovaSenhaFamilia" placeholder="Confirme a nova senha">
+                                        </div>
+                                        <button class="config-btn config-btn-primary" onclick="alterarSenhaFamilia()">
+                                            <i class="fas fa-save"></i> Alterar senha
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="config-card">
+                                    <div class="config-card-header">
+                                        <i class="fas fa-user-lock"></i>
+                                        <h4>Minha Conta</h4>
+                                    </div>
+                                    <div class="config-card-body">
+                                        <div class="config-field">
+                                            <label>Meu nome</label>
+                                            <input type="text" id="meuNome" value="">
+                                        </div>
+                                        <div class="config-field">
+                                            <label>Meu usuário</label>
+                                            <input type="text" id="meuUsuario" value="" disabled>
+                                        </div>
+                                        <div class="config-field">
+                                            <label>Minha senha atual</label>
+                                            <input type="password" id="minhaSenhaAtual" placeholder="Digite sua senha atual">
+                                        </div>
+                                        <div class="config-field">
+                                            <label>Nova senha</label>
+                                            <input type="password" id="minhaNovaSenha" placeholder="Nova senha">
+                                        </div>
+                                        <div class="config-field">
+                                            <label>Confirmar nova senha</label>
+                                            <input type="password" id="confirmarMinhaNovaSenha" placeholder="Confirme a nova senha">
+                                        </div>
+                                        <button class="config-btn config-btn-primary" onclick="alterarMinhaSenha()">
+                                            <i class="fas fa-save"></i> Alterar minha senha
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="config-card">
+                                    <div class="config-card-header">
+                                        <i class="fas fa-history"></i>
+                                        <h4>Sessões Ativas</h4>
+                                    </div>
+                                    <div class="config-card-body">
+                                        <p style="color: #8ba3c7;">Dispositivos conectados à sua conta</p>
+                                        <div class="sessoes-list" id="sessoesList">
+                                            <div class="sessao-item">
+                                                <div class="sessao-info">
+                                                    <strong>Este dispositivo</strong>
+                                                    <span>Atual</span>
+                                                </div>
+                                                <button class="config-btn config-btn-small" disabled>Ativo</button>
+                                            </div>
+                                        </div>
+                                        <button class="config-btn config-btn-danger" style="margin-top: 15px;" onclick="encerrarTodasSessoes()">
+                                            <i class="fas fa-sign-out-alt"></i> Encerrar todas as outras sessões
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- CONFIGURAÇÕES DE NOTIFICAÇÕES -->
+                            <div id="configNotificacoes" class="config-pane">
+                                <h3>Notificações</h3>
+                                
+                                <div class="config-card">
+                                    <div class="config-card-header">
+                                        <i class="fas fa-bell"></i>
+                                        <h4>Preferências de Notificação</h4>
+                                    </div>
+                                    <div class="config-card-body">
+                                        <div class="config-toggle">
+                                            <label>
+                                                <input type="checkbox" id="notifTarefas" checked> 
+                                                Notificações de tarefas
+                                            </label>
+                                        </div>
+                                        <div class="config-toggle">
+                                            <label>
+                                                <input type="checkbox" id="notifLembretes" checked> 
+                                                Notificações de lembretes
+                                            </label>
+                                        </div>
+                                        <div class="config-toggle">
+                                            <label>
+                                                <input type="checkbox" id="notifMensagens" checked> 
+                                                Notificações de mensagens
+                                            </label>
+                                        </div>
+                                        <div class="config-toggle">
+                                            <label>
+                                                <input type="checkbox" id="notifMembros" checked> 
+                                                Novos membros
+                                            </label>
+                                        </div>
+                                        <button class="config-btn config-btn-primary" style="margin-top: 15px;" onclick="salvarNotificacoes()">
+                                            <i class="fas fa-save"></i> Salvar preferências
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="config-card">
+                                    <div class="config-card-header">
+                                        <i class="fas fa-clock"></i>
+                                        <h4>Lembretes Automáticos</h4>
+                                    </div>
+                                    <div class="config-card-body">
+                                        <div class="config-field">
+                                            <label>Lembrar de tarefas pendentes</label>
+                                            <select id="lembreteTarefas" class="config-select">
+                                                <option value="0">Não lembrar</option>
+                                                <option value="15">15 minutos antes</option>
+                                                <option value="30">30 minutos antes</option>
+                                                <option value="60">1 hora antes</option>
+                                                <option value="1440">1 dia antes</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- CONFIGURAÇÕES DE PRIVACIDADE -->
+                            <div id="configPrivacidade" class="config-pane">
+                                <h3>Privacidade</h3>
+                                
+                                <div class="config-card">
+                                    <div class="config-card-header">
+                                        <i class="fas fa-user-secret"></i>
+                                        <h4>Visibilidade do Perfil</h4>
+                                    </div>
+                                    <div class="config-card-body">
+                                        <div class="config-toggle">
+                                            <label>
+                                                <input type="checkbox" id="perfilPublico" checked> 
+                                                Meu perfil visível para todos os membros
+                                            </label>
+                                        </div>
+                                        <div class="config-toggle">
+                                            <label>
+                                                <input type="checkbox" id="mostrarEmail"> 
+                                                Mostrar meu e-mail
+                                            </label>
+                                        </div>
+                                        <div class="config-toggle">
+                                            <label>
+                                                <input type="checkbox" id="mostrarTelefone"> 
+                                                Mostrar meu telefone
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="config-card">
+                                    <div class="config-card-header">
+                                        <i class="fas fa-ban"></i>
+                                        <h4>Bloqueios</h4>
+                                    </div>
+                                    <div class="config-card-body">
+                                        <p style="color: #8ba3c7;">Membros bloqueados não podem ver suas informações</p>
+                                        <div class="bloqueios-list" id="bloqueiosList">
+                                            <!-- Lista de membros bloqueados -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- CONFIGURAÇÕES DE BACKUP -->
+                            <div id="configBackup" class="config-pane">
+                                <h3>Backup e Restauração</h3>
+                                
+                                <div class="config-card">
+                                    <div class="config-card-header">
+                                        <i class="fas fa-download"></i>
+                                        <h4>Exportar Dados</h4>
+                                    </div>
+                                    <div class="config-card-body">
+                                        <p style="color: #8ba3c7; margin-bottom: 15px;">Exporte todos os dados da sua família</p>
+                                        <button class="config-btn config-btn-primary" onclick="exportarDados()">
+                                            <i class="fas fa-file-export"></i> Exportar Tudo
+                                        </button>
+                                        <div style="margin-top: 15px;">
+                                            <button class="config-btn" onclick="exportarTarefas()">
+                                                <i class="fas fa-tasks"></i> Apenas Tarefas
+                                            </button>
+                                            <button class="config-btn" onclick="exportarFotos()">
+                                                <i class="fas fa-images"></i> Apenas Fotos
+                                            </button>
+                                            <button class="config-btn" onclick="exportarDocumentos()">
+                                                <i class="fas fa-file-alt"></i> Apenas Documentos
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="config-card">
+                                    <div class="config-card-header">
+                                        <i class="fas fa-upload"></i>
+                                        <h4>Importar Dados</h4>
+                                    </div>
+                                    <div class="config-card-body">
+                                        <p style="color: #ff6b6b; margin-bottom: 15px;">A importação pode substituir dados existentes</p>
+                                        <input type="file" id="importarArquivo" accept=".json">
+                                        <button class="config-btn config-btn-warning" onclick="importarDados()" style="margin-top: 10px;">
+                                            <i class="fas fa-file-import"></i> Importar
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="config-card">
+                                    <div class="config-card-header">
+                                        <i class="fas fa-undo-alt"></i>
+                                        <h4>Restaurar Padrões</h4>
+                                    </div>
+                                    <div class="config-card-body">
+                                        <p style="color: #ff6b6b;">Isso apagará todas as configurações personalizadas</p>
+                                        <button class="config-btn config-btn-danger" onclick="confirmarRestaurarPadroes()">
+                                            <i class="fas fa-undo"></i> Restaurar Padrões
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- CONFIGURAÇÕES DE PERSONALIZAÇÃO -->
+                            <div id="configPersonalizacao" class="config-pane">
+                                <h3>Aparência</h3>
+                                
+                                <div class="config-card">
+                                    <div class="config-card-header">
+                                        <i class="fas fa-palette"></i>
+                                        <h4>Tema</h4>
+                                    </div>
+                                    <div class="config-card-body">
+                                        <div class="tema-opcoes">
+                                            <div class="tema-opcao" onclick="selecionarTema('escuro')">
+                                                <div class="tema-preview tema-escuro"></div>
+                                                <span>Escuro (padrão)</span>
+                                            </div>
+                                            <div class="tema-opcao" onclick="selecionarTema('claro')">
+                                                <div class="tema-preview tema-claro"></div>
+                                                <span>Claro</span>
+                                            </div>
+                                            <div class="tema-opcao" onclick="selecionarTema('azul')">
+                                                <div class="tema-preview tema-azul"></div>
+                                                <span>Azul</span>
+                                            </div>
+                                            <div class="tema-opcao" onclick="selecionarTema('roxo')">
+                                                <div class="tema-preview tema-roxo"></div>
+                                                <span>Roxo</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="config-card">
+                                    <div class="config-card-header">
+                                        <i class="fas fa-font"></i>
+                                        <h4>Tamanho da Fonte</h4>
+                                    </div>
+                                    <div class="config-card-body">
+                                        <select id="tamanhoFonte" class="config-select">
+                                            <option value="pequeno">Pequeno</option>
+                                            <option value="medio" selected>Médio</option>
+                                            <option value="grande">Grande</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- CONFIGURAÇÕES DE AUDITORIA -->
+                            <div id="configAuditoria" class="config-pane">
+                                <h3>Registro de Atividades</h3>
+                                
+                                <div class="config-card">
+                                    <div class="config-card-header">
+                                        <i class="fas fa-history"></i>
+                                        <h4>Log de Ações</h4>
+                                    </div>
+                                    <div class="config-card-body">
+                                        <div class="auditoria-filtros">
+                                            <select id="filtroAuditoria" class="config-select" style="width: auto;">
+                                                <option value="todos">Todas as ações</option>
+                                                <option value="membros">Membros</option>
+                                                <option value="tarefas">Tarefas</option>
+                                                <option value="financas">Finanças</option>
+                                                <option value="config">Configurações</option>
+                                            </select>
+                                            <input type="date" id="filtroDataInicio" class="config-input">
+                                            <input type="date" id="filtroDataFim" class="config-input">
+                                            <button class="config-btn" onclick="filtrarAuditoria()">
+                                                <i class="fas fa-search"></i> Filtrar
+                                            </button>
+                                        </div>
+                                        
+                                        <div class="auditoria-lista" id="auditoriaLista">
+                                            <!-- Lista de atividades será inserida aqui -->
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="config-card">
+                                    <div class="config-card-header">
+                                        <i class="fas fa-chart-bar"></i>
+                                        <h4>Relatórios</h4>
+                                    </div>
+                                    <div class="config-card-body">
+                                        <button class="config-btn" onclick="gerarRelatorioMensal()">
+                                            <i class="fas fa-calendar-alt"></i> Relatório Mensal
+                                        </button>
+                                        <button class="config-btn" onclick="gerarRelatorioAtividades()">
+                                            <i class="fas fa-chart-line"></i> Relatório de Atividades
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </main>
@@ -2881,6 +3785,56 @@
             <div class="modal-buttons">
                 <button class="btn-save" onclick="salvarDocumento()">Adicionar</button>
                 <button class="btn-cancel" onclick="fecharModalDocumento()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL EDITAR FOTO DA FAMÍLIA -->
+    <div class="modal-overlay" id="modalEditarFotoFamilia">
+        <div class="modal">
+            <h2>📸 Alterar Foto da Família</h2>
+            <div class="photo-upload-container">
+                <div class="photo-preview-circle large" id="editFamilyPhotoPreview">
+                    <img class="preview-img" id="editFamilyPreviewImg" src="#" alt="preview">
+                    <div class="placeholder-icon">👪</div>
+                </div>
+                <input type="file" id="editFamilyFoto" accept="image/*" onchange="previewEditFamilyPhoto(event)">
+            </div>
+            
+            <div class="modal-buttons">
+                <button class="btn-save" onclick="salvarFotoFamilia()">
+                    <i class="fas fa-save"></i> Salvar
+                </button>
+                <button class="btn-cancel" onclick="fecharModalEditarFotoFamilia()">
+                    <i class="fas fa-times"></i> Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CONFIRMAR AÇÃO -->
+    <div class="modal-overlay" id="modalConfirmar">
+        <div class="modal" style="max-width: 400px;">
+            <h2 id="confirmarTitulo">Confirmar Ação</h2>
+            <p id="confirmarMensagem" style="color: #8ba3c7; margin-bottom: 20px;">Tem certeza que deseja continuar?</p>
+            
+            <div class="modal-buttons">
+                <button class="btn-save" id="confirmarSimBtn">Sim</button>
+                <button class="btn-cancel" onclick="fecharModalConfirmar()">Não</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL RELATÓRIO -->
+    <div class="modal-overlay" id="modalRelatorio">
+        <div class="modal" style="max-width: 600px;">
+            <h2 id="relatorioTitulo">Relatório</h2>
+            <div id="relatorioConteudo" style="max-height: 400px; overflow-y: auto; color: #ffffff;"></div>
+            
+            <div class="modal-buttons">
+                <button class="btn-save" onclick="fecharModalRelatorio()">
+                    <i class="fas fa-check"></i> OK
+                </button>
             </div>
         </div>
     </div>
@@ -3625,6 +4579,12 @@
                 document.getElementById('pageTitle').textContent = 'Configurações';
                 document.getElementById('pageSubtitle').textContent = 'Ajustes da família';
                 document.getElementById('headerActions').innerHTML = '';
+                
+                // Carregar dados das configurações
+                carregarConfigGeral();
+                carregarConfigMembros();
+                carregarConfigSeguranca();
+                carregarAuditoria();
             }
         };
 
@@ -3949,9 +4909,6 @@
                 const dataFormatada = dataObj.toLocaleDateString('pt-BR');
                 const isAtrasada = !tarefa.concluida && tarefa.data < hoje;
                 
-                let prioridadeClass = '';
-                let prioridadeLabel = tarefa.prioridade || 'média';
-                
                 return `
                     <div class="task-item" data-id="${tarefa.id}" style="${isAtrasada ? 'border-left: 4px solid #ff6b6b;' : ''}">
                         <div class="task-info">
@@ -3966,7 +4923,7 @@
                                 <div class="task-meta">
                                     <span><i class="fas fa-calendar"></i> ${dataFormatada}</span>
                                     <span><i class="fas fa-user"></i> ${responsavel ? responsavel.nome : 'Todos'}</span>
-                                    <span><i class="fas fa-flag"></i> ${prioridadeLabel}</span>
+                                    <span><i class="fas fa-flag"></i> ${tarefa.prioridade || 'média'}</span>
                                     ${isAtrasada ? '<span style="color: #ff6b6b;">Atrasada</span>' : ''}
                                 </div>
                                 ${tarefa.descricao ? `<div style="color: #8ba3c7; font-size: 0.8rem; margin-top: 5px;">${tarefa.descricao}</div>` : ''}
@@ -5015,6 +5972,537 @@
             }).join('');
         }
 
+        // ==================== FUNÇÕES DE CONFIGURAÇÃO ====================
+        window.mostrarSubConfig = function(subcategoria) {
+            // Atualizar menu
+            document.querySelectorAll('.config-menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Esconder todos os painéis
+            document.querySelectorAll('.config-pane').forEach(pane => {
+                pane.classList.remove('active');
+            });
+            
+            // Mostrar painel selecionado
+            document.getElementById(`config${subcategoria.charAt(0).toUpperCase() + subcategoria.slice(1)}`).classList.add('active');
+            
+            // Carregar dados específicos
+            if (subcategoria === 'geral') {
+                carregarConfigGeral();
+            } else if (subcategoria === 'membros') {
+                carregarConfigMembros();
+            } else if (subcategoria === 'seguranca') {
+                carregarConfigSeguranca();
+            } else if (subcategoria === 'auditoria') {
+                carregarAuditoria();
+            }
+        };
+
+        function carregarConfigGeral() {
+            const familia = familias.find(f => f.id === usuarioAtual.familiaId);
+            if (!familia) return;
+            
+            document.getElementById('configFamiliaNome').value = familia.nome || '';
+            document.getElementById('configDataCriacao').textContent = new Date(familia.dataCriacao).toLocaleDateString('pt-BR');
+            document.getElementById('configAdmin').textContent = familia.admin || usuarioAtual.nome;
+            
+            const membrosFamilia = membros.filter(m => m.familiaId === usuarioAtual.familiaId);
+            document.getElementById('configTotalMembros').textContent = membrosFamilia.length;
+            
+            const tarefasFamilia = tarefas.filter(t => t.familiaId === usuarioAtual.familiaId);
+            const fotosFamilia = fotos.filter(f => f.familiaId === usuarioAtual.familiaId);
+            const docsFamilia = documentos.filter(d => d.familiaId === usuarioAtual.familiaId);
+            const msgsFamilia = mensagens.filter(m => m.familiaId === usuarioAtual.familiaId);
+            const transacoesFamilia = transacoes.filter(t => t.familiaId === usuarioAtual.familiaId);
+            
+            document.getElementById('configTotalTarefas').textContent = tarefasFamilia.length;
+            document.getElementById('configTotalFotos').textContent = fotosFamilia.length;
+            document.getElementById('configTotalDocumentos').textContent = docsFamilia.length;
+            document.getElementById('configTotalMensagens').textContent = msgsFamilia.length;
+            document.getElementById('configTotalTransacoes').textContent = transacoesFamilia.length;
+            
+            const totalPontos = membrosFamilia.reduce((acc, m) => acc + (m.pontos || 0), 0);
+            document.getElementById('configTotalPontos').textContent = totalPontos;
+            
+            // Foto da família
+            const familyPhoto = document.getElementById('familyPhotoImg');
+            const photoPlaceholder = document.querySelector('.photo-placeholder');
+            if (familia.foto) {
+                familyPhoto.src = familia.foto;
+                familyPhoto.style.display = 'block';
+                photoPlaceholder.style.display = 'none';
+            } else {
+                familyPhoto.style.display = 'none';
+                photoPlaceholder.style.display = 'block';
+            }
+        }
+
+        function carregarConfigMembros() {
+            const membrosFamilia = membros.filter(m => m.familiaId === usuarioAtual.familiaId);
+            
+            const select = document.getElementById('removerMembroSelect');
+            select.innerHTML = '<option value="">Selecione um membro</option>';
+            membrosFamilia.forEach(membro => {
+                if (membro.id !== usuarioAtual.id) {
+                    select.innerHTML += `<option value="${membro.id}">${membro.nome}${membro.cargo === 'admin' ? ' (Admin)' : ''}</option>`;
+                }
+            });
+            
+            const cargosList = document.getElementById('cargosList');
+            cargosList.innerHTML = membrosFamilia.map(membro => `
+                <div class="cargo-item">
+                    <span style="color: #ffffff;">${membro.nome}</span>
+                    <select class="config-select" style="width: auto;" onchange="alterarCargo('${membro.id}', this.value)">
+                        <option value="membro" ${membro.cargo === 'membro' ? 'selected' : ''}>Membro</option>
+                        <option value="admin" ${membro.cargo === 'admin' ? 'selected' : ''}>Administrador</option>
+                    </select>
+                </div>
+            `).join('');
+            
+            document.getElementById('inviteLink').value = `https://familyhub.app/convite/${usuarioAtual.familiaId}`;
+        }
+
+        function carregarConfigSeguranca() {
+            const familia = familias.find(f => f.id === usuarioAtual.familiaId);
+            document.getElementById('senhaFamiliaAtual').value = familia?.senha || '';
+            document.getElementById('meuNome').value = usuarioAtual.nome;
+            document.getElementById('meuUsuario').value = usuarioAtual.usuario;
+        }
+
+        window.alterarSenhaFamilia = function() {
+            const novaSenha = document.getElementById('novaSenhaFamilia').value;
+            const confirmar = document.getElementById('confirmarNovaSenhaFamilia').value;
+            
+            if (!novaSenha) {
+                mostrarAlerta('erro', 'Digite a nova senha');
+                return;
+            }
+            
+            if (novaSenha.length < 6) {
+                mostrarAlerta('erro', 'A senha deve ter pelo menos 6 caracteres');
+                return;
+            }
+            
+            if (novaSenha !== confirmar) {
+                mostrarAlerta('erro', 'As senhas não coincidem');
+                return;
+            }
+            
+            const familia = familias.find(f => f.id === usuarioAtual.familiaId);
+            if (familia) {
+                familia.senha = novaSenha;
+                salvarFamilias();
+                usuarioAtual.familiaSenha = novaSenha;
+                mostrarAlerta('sucesso', 'Senha da família alterada com sucesso!');
+                
+                document.getElementById('novaSenhaFamilia').value = '';
+                document.getElementById('confirmarNovaSenhaFamilia').value = '';
+            }
+        };
+
+        window.alterarMinhaSenha = function() {
+            const senhaAtual = document.getElementById('minhaSenhaAtual').value;
+            const novaSenha = document.getElementById('minhaNovaSenha').value;
+            const confirmar = document.getElementById('confirmarMinhaNovaSenha').value;
+            
+            if (!senhaAtual) {
+                mostrarAlerta('erro', 'Digite sua senha atual');
+                return;
+            }
+            
+            if (senhaAtual !== usuarioAtual.senha) {
+                mostrarAlerta('erro', 'Senha atual incorreta');
+                return;
+            }
+            
+            if (!novaSenha) {
+                mostrarAlerta('erro', 'Digite a nova senha');
+                return;
+            }
+            
+            if (novaSenha.length < 6) {
+                mostrarAlerta('erro', 'A nova senha deve ter pelo menos 6 caracteres');
+                return;
+            }
+            
+            if (novaSenha !== confirmar) {
+                mostrarAlerta('erro', 'As senhas não coincidem');
+                return;
+            }
+            
+            const membro = membros.find(m => m.id === usuarioAtual.id);
+            if (membro) {
+                membro.senha = novaSenha;
+                usuarioAtual.senha = novaSenha;
+                salvarMembros();
+                localStorage.setItem('familyhub_usuario_logado', JSON.stringify(usuarioAtual));
+                mostrarAlerta('sucesso', 'Sua senha foi alterada com sucesso!');
+                
+                document.getElementById('minhaSenhaAtual').value = '';
+                document.getElementById('minhaNovaSenha').value = '';
+                document.getElementById('confirmarMinhaNovaSenha').value = '';
+            }
+        };
+
+        window.salvarNomeFamilia = function() {
+            const novoNome = document.getElementById('configFamiliaNome').value.trim();
+            if (!novoNome) {
+                mostrarAlerta('erro', 'Digite um nome para a família');
+                return;
+            }
+            
+            const familia = familias.find(f => f.id === usuarioAtual.familiaId);
+            if (familia) {
+                const nomeAntigo = familia.nome;
+                familia.nome = novoNome;
+                usuarioAtual.familiaNome = novoNome;
+                salvarFamilias();
+                document.getElementById('sidebarFamilyName').textContent = novoNome;
+                mostrarAlerta('sucesso', `Nome da família alterado de "${nomeAntigo}" para "${novoNome}"`);
+                adicionarAtividade('edit', `${usuarioAtual.nome} alterou o nome da família`);
+            }
+        };
+
+        window.alterarCargo = function(membroId, novoCargo) {
+            const membro = membros.find(m => m.id == membroId);
+            if (membro) {
+                const cargoAntigo = membro.cargo;
+                membro.cargo = novoCargo;
+                salvarMembros();
+                mostrarAlerta('sucesso', `Cargo de ${membro.nome} alterado para ${novoCargo}`);
+                adicionarAtividade('edit', `${usuarioAtual.nome} alterou cargo de ${membro.nome} (${cargoAntigo} → ${novoCargo})`);
+            }
+        };
+
+        window.confirmarRemoverMembro = function() {
+            const membroId = document.getElementById('removerMembroSelect').value;
+            if (!membroId) {
+                mostrarAlerta('erro', 'Selecione um membro para remover');
+                return;
+            }
+            
+            const membro = membros.find(m => m.id == membroId);
+            abrirModalConfirmar(
+                `Remover ${membro.nome}?`,
+                `Tem certeza que deseja remover ${membro.nome} da família? Esta ação não pode ser desfeita.`,
+                function() {
+                    removerMembro(membroId);
+                }
+            );
+        };
+
+        window.toggleMostrarSenha = function() {
+            const span = document.getElementById('configFamiliaSenha');
+            if (span.textContent === '******') {
+                span.textContent = usuarioAtual.familiaSenha;
+            } else {
+                span.textContent = '******';
+            }
+        };
+
+        window.copiarLinkConvite = function() {
+            const link = document.getElementById('inviteLink');
+            link.select();
+            navigator.clipboard.writeText(link.value).then(() => {
+                mostrarAlerta('sucesso', 'Link de convite copiado!');
+            });
+        };
+
+        window.salvarNotificacoes = function() {
+            const notificacoes = {
+                tarefas: document.getElementById('notifTarefas').checked,
+                lembretes: document.getElementById('notifLembretes').checked,
+                mensagens: document.getElementById('notifMensagens').checked,
+                membros: document.getElementById('notifMembros').checked
+            };
+            
+            localStorage.setItem('familyhub_notificacoes', JSON.stringify(notificacoes));
+            mostrarAlerta('sucesso', 'Preferências de notificação salvas!');
+        };
+
+        window.selecionarTema = function(tema) {
+            mostrarAlerta('sucesso', `Tema ${tema} selecionado (em desenvolvimento)`);
+        };
+
+        window.exportarDados = function() {
+            const dados = {
+                familia: familias.find(f => f.id === usuarioAtual.familiaId),
+                membros: membros.filter(m => m.familiaId === usuarioAtual.familiaId),
+                tarefas: tarefas.filter(t => t.familiaId === usuarioAtual.familiaId),
+                fotos: fotos.filter(f => f.familiaId === usuarioAtual.familiaId),
+                documentos: documentos.filter(d => d.familiaId === usuarioAtual.familiaId),
+                transacoes: transacoes.filter(t => t.familiaId === usuarioAtual.familiaId),
+                lembretes: lembretes.filter(l => l.familiaId === usuarioAtual.familiaId),
+                mensagens: mensagens.filter(m => m.familiaId === usuarioAtual.familiaId),
+                atividades: atividades,
+                exportadoEm: new Date().toISOString()
+            };
+            
+            const dataStr = JSON.stringify(dados, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            
+            const exportFileDefaultName = `familyhub_backup_${new Date().toISOString().slice(0,10)}.json`;
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+            
+            mostrarAlerta('sucesso', 'Backup exportado com sucesso!');
+        };
+
+        window.importarDados = function() {
+            const fileInput = document.getElementById('importarArquivo');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                mostrarAlerta('erro', 'Selecione um arquivo para importar');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const dados = JSON.parse(e.target.result);
+                    processarImportacao(dados);
+                } catch (error) {
+                    mostrarAlerta('erro', 'Arquivo inválido');
+                }
+            };
+            reader.readAsText(file);
+        };
+
+        function processarImportacao(dados) {
+            if (dados.membros) {
+                dados.membros.forEach(m => {
+                    if (!membros.some(em => em.id === m.id)) {
+                        membros.push(m);
+                    }
+                });
+            }
+            
+            if (dados.tarefas) {
+                dados.tarefas.forEach(t => {
+                    if (!tarefas.some(et => et.id === t.id)) {
+                        tarefas.push(t);
+                    }
+                });
+            }
+            
+            if (dados.fotos) {
+                dados.fotos.forEach(f => {
+                    if (!fotos.some(ef => ef.id === f.id)) {
+                        fotos.push(f);
+                    }
+                });
+            }
+            
+            salvarMembros();
+            salvarTarefas();
+            salvarFotos();
+            
+            mostrarAlerta('sucesso', 'Dados importados com sucesso!');
+            document.getElementById('importarArquivo').value = '';
+        }
+
+        function carregarAuditoria() {
+            const auditoriaLista = document.getElementById('auditoriaLista');
+            
+            if (atividades.length === 0) {
+                auditoriaLista.innerHTML = '<p style="color: #8ba3c7; text-align: center;">Nenhuma atividade registrada</p>';
+                return;
+            }
+            
+            auditoriaLista.innerHTML = atividades.slice(0, 20).map(ativ => {
+                const data = new Date(ativ.data);
+                const dataFormatada = data.toLocaleDateString('pt-BR');
+                const hora = data.toLocaleTimeString('pt-BR');
+                
+                return `
+                    <div class="activity-item">
+                        <div class="activity-icon"><i class="fas ${getIconeAtividade(ativ.tipo)}"></i></div>
+                        <div class="activity-details">
+                            <div class="activity-text">${ativ.descricao}</div>
+                            <div class="activity-time">${dataFormatada} às ${hora}</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function getIconeAtividade(tipo) {
+            const icones = {
+                'add': 'fa-plus-circle',
+                'edit': 'fa-edit',
+                'delete': 'fa-trash',
+                'check': 'fa-check-circle',
+                'pontos': 'fa-star',
+                'levelup': 'fa-level-up-alt'
+            };
+            return icones[tipo] || 'fa-history';
+        }
+
+        window.filtrarAuditoria = function() {
+            carregarAuditoria();
+        };
+
+        window.gerarRelatorioMensal = function() {
+            const hoje = new Date();
+            const mes = hoje.getMonth();
+            const ano = hoje.getFullYear();
+            
+            const tarefasMes = tarefas.filter(t => {
+                const data = new Date(t.data);
+                return data.getMonth() === mes && data.getFullYear() === ano;
+            });
+            
+            const concluidas = tarefasMes.filter(t => t.concluida).length;
+            const pendentes = tarefasMes.length - concluidas;
+            
+            const relatorio = `
+                <h3 style="color: #4f9fff;">Relatório de ${hoje.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}</h3>
+                <p>📋 Total de tarefas: ${tarefasMes.length}</p>
+                <p>✅ Tarefas concluídas: ${concluidas}</p>
+                <p>⏳ Tarefas pendentes: ${pendentes}</p>
+                <p>📊 Taxa de conclusão: ${tarefasMes.length ? Math.round((concluidas/tarefasMes.length)*100) : 0}%</p>
+            `;
+            
+            mostrarRelatorio('Relatório Mensal', relatorio);
+        };
+
+        window.gerarRelatorioAtividades = function() {
+            const totalAtividades = atividades.length;
+            const ultimasAtividades = atividades.slice(0, 10);
+            
+            let relatorio = '<h3 style="color: #4f9fff;">Últimas Atividades</h3>';
+            ultimasAtividades.forEach(ativ => {
+                const data = new Date(ativ.data);
+                relatorio += `<p>📌 ${data.toLocaleDateString()} - ${ativ.descricao}</p>`;
+            });
+            relatorio += `<p>📊 Total de atividades registradas: ${totalAtividades}</p>`;
+            
+            mostrarRelatorio('Relatório de Atividades', relatorio);
+        };
+
+        function abrirModalConfirmar(titulo, mensagem, callback) {
+            document.getElementById('confirmarTitulo').textContent = titulo;
+            document.getElementById('confirmarMensagem').textContent = mensagem;
+            document.getElementById('confirmarSimBtn').onclick = function() {
+                callback();
+                fecharModalConfirmar();
+            };
+            document.getElementById('modalConfirmar').style.display = 'flex';
+        }
+
+        function fecharModalConfirmar() {
+            document.getElementById('modalConfirmar').style.display = 'none';
+        }
+
+        function mostrarRelatorio(titulo, conteudo) {
+            document.getElementById('relatorioTitulo').textContent = titulo;
+            document.getElementById('relatorioConteudo').innerHTML = conteudo;
+            document.getElementById('modalRelatorio').style.display = 'flex';
+        }
+
+        function fecharModalRelatorio() {
+            document.getElementById('modalRelatorio').style.display = 'none';
+        }
+
+        window.abrirModalEditarFotoFamilia = function() {
+            document.getElementById('modalEditarFotoFamilia').style.display = 'flex';
+        };
+
+        window.fecharModalEditarFotoFamilia = function() {
+            document.getElementById('modalEditarFotoFamilia').style.display = 'none';
+        };
+
+        window.previewEditFamilyPhoto = function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('editFamilyPreviewImg').src = e.target.result;
+                    document.getElementById('editFamilyPreviewImg').style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        };
+
+        window.salvarFotoFamilia = function() {
+            const preview = document.getElementById('editFamilyPreviewImg');
+            if (!preview.src || preview.src === '#') {
+                mostrarAlerta('erro', 'Selecione uma foto');
+                return;
+            }
+            
+            const familia = familias.find(f => f.id === usuarioAtual.familiaId);
+            if (familia) {
+                familia.foto = preview.src;
+                salvarFamilias();
+                
+                document.getElementById('familyPhotoImg').src = preview.src;
+                document.getElementById('familyPhotoImg').style.display = 'block';
+                document.querySelector('.photo-placeholder').style.display = 'none';
+                
+                mostrarAlerta('sucesso', 'Foto da família atualizada!');
+                fecharModalEditarFotoFamilia();
+            }
+        };
+
+        window.removerFotoFamilia = function() {
+            const familia = familias.find(f => f.id === usuarioAtual.familiaId);
+            if (familia) {
+                familia.foto = null;
+                salvarFamilias();
+                
+                document.getElementById('familyPhotoImg').style.display = 'none';
+                document.querySelector('.photo-placeholder').style.display = 'block';
+                
+                mostrarAlerta('sucesso', 'Foto da família removida');
+            }
+        };
+
+        window.encerrarTodasSessoes = function() {
+            mostrarAlerta('sucesso', 'Todas as outras sessões foram encerradas');
+        };
+
+        window.confirmarRestaurarPadroes = function() {
+            abrirModalConfirmar(
+                'Restaurar Padrões',
+                'Tem certeza? Todas as configurações personalizadas serão perdidas.',
+                function() {
+                    mostrarAlerta('sucesso', 'Configurações restauradas para o padrão');
+                }
+            );
+        };
+
+        window.exportarTarefas = function() {
+            const dados = tarefas.filter(t => t.familiaId === usuarioAtual.familiaId);
+            exportarJSON(dados, 'tarefas');
+        };
+
+        window.exportarFotos = function() {
+            const dados = fotos.filter(f => f.familiaId === usuarioAtual.familiaId);
+            exportarJSON(dados, 'fotos');
+        };
+
+        window.exportarDocumentos = function() {
+            const dados = documentos.filter(d => d.familiaId === usuarioAtual.familiaId);
+            exportarJSON(dados, 'documentos');
+        };
+
+        function exportarJSON(dados, nome) {
+            const dataStr = JSON.stringify(dados, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', `familyhub_${nome}_${new Date().toISOString().slice(0,10)}.json`);
+            linkElement.click();
+        }
+
         // Alertas
         window.mostrarAlerta = function(tipo, mensagem) {
             const alertBox = document.getElementById('customAlert');
@@ -5044,7 +6532,10 @@
                 'modalUploadFoto',
                 'modalTransacao',
                 'modalLembrete',
-                'modalDocumento'
+                'modalDocumento',
+                'modalEditarFotoFamilia',
+                'modalConfirmar',
+                'modalRelatorio'
             ];
             
             modais.forEach(modalId => {
