@@ -10,7 +10,7 @@ require_once __DIR__ . '/includes/config.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
-        /* ===== PALETA FAMILYHUB ===== */
+        /*  PALETA FAMILYHUB */
         /* --verde-escuro: #1a3a2a  --verde-medio: #2d5a3d  --oliva: #8a9a3a  --laranja: #c8741a  --dourado: #e8a830  --creme: #f5f0e8  --creme-escuro: #ede5d0 */
         *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
         body{background-color:#1a3a2a;min-height:100vh;display:flex;position:relative;overflow:hidden}
@@ -1925,4 +1925,5 @@ function carregarAuditoria() {
 })();
 </script>
 </body>
+
 </html>
